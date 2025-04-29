@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/diariopng.png" type="image/png">
+    <script src="../js/script.js"> </script>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="inicio">
+                <h1 class="nome">Diário Winchester </h1>
+            </div>
+            <nav class="nav">
+                <ul class="navbar">
+                    <li>
+                        <a href="../pages/home.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../pages/personagens.html">Personagens</a>
+                    </li>
+                    <li>
+                        <a href="../pages/temporadas.html">Temporadas</a>
+                    </li>
+                    <li>
+                        <a href="../pages/quiz.html">Quiz</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="principal">
+        <div class="destaques">
+            <h2>Personagens e Criaturas em Destaque</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="../img/sam.jpg" alt="Sam Winchester">
+                    <h3>Sam Winchester</h3>
+                    <strong class="tag-humano"> Caçador </strong>
+                    <p>Sam é o irmão mais novo da família Winchester, conhecido por sua inteligência, empatia e forte
+                        senso moral. Desde pequeno, tentou fugir da vida de caçador, buscando uma existência normal na
+                        faculdade. No entanto, o destino o puxou de volta após a morte de sua namorada. Sam carrega uma
+                        luta interna entre o dever e o desejo de liberdade, desejo de viver uma vida comum. Ao longo da
+                        série, sua compaixão o torna essencial para a esperança e redenção de muitos.<strong> 1ª aparição: 1º episódio da 1ª temporada  </strong></p>
+                </div>
+                <div class="card">
+                    <img src="../img/castiel.jpg" alt="Castiel">
+                    <h3>Castiel</h3>
+                    <strong class="tag-anjo"> Anjo </strong>
+                    <p>Castiel é um anjo do Senhor que surge inicialmente como um ser frio e obediente, mas que
+                        desenvolve um laço com os irmãos Winchester. Sua jornada é marcada pela descoberta da humanidade
+                        dentro de si, muitas vezes confrontando ordens divinas em nome do amor e da justiça. Castiel
+                        aprende a questionar a fé cega e a escolher o que é certo, mesmo que traga sofrimento. Sua
+                        inocência combinada com força faz dele uma peça crucial no equilíbrio entre Céu e Terra.
+
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="../img/dean.jpg" alt="Dean">
+                    <h3>Dean Winchester</h3>
+                    <strong class="tag-humano"> Caçador </strong>
+                    <p>Dean é o irmão mais velho, marcado por uma personalidade corajosa, sarcástica e profundamente
+                        leal à família. Criado para ser o protetor de Sam, ele assume o papel de soldado sem hesitar,
+                        enfrentando horrores sobrenaturais desde jovem. Apesar da fachada durona, Dean possui enorme
+                        sensibilidade e medo de perder quem ama. O Impala, o rock clássico e a comida simples são
+                        símbolos de seu espírito. Ele representa a luta silenciosa entre vulnerabilidade e bravura.<strong> 1ª aparição: 1º episódio da 1ª temporada  </strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="destaques">
+            <h2>Personagens e Criaturas </h2>
+            <select onclick="filtroPers()"  id="filtrar" class="filtro">
+                <option value="Todos">Sem Filtro</option>
+                <option value="Cacadores">Caçador</option>
+                <option value="Anjo">Anjo</option>
+                <option value="Demonio">Demônio</option>
+                <option value="Bruxa">Bruxa</option>
+                <option value="Divino">Criaturas Bíblicas</option>
+                <option value="Monstros">Monstros</option>
+                <option value="Comum">Pessoas Comuns</option>
+            </select>
+            <section>
+                <div id="section_filtros" class="cards"> </div>
+            </section>
+        </div>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>© 2025 Diário Winchester | Feito com 💖 para os fãs de Supernatural.</p>
+    </footer>
+
+</body>
+
+</html>
