@@ -1,4 +1,4 @@
-function form() {
+function enviar() {
     alert('Muito Obrigada pela colaboração, seus dados foram para o banco')
 }
 
