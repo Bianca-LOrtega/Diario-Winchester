@@ -267,9 +267,83 @@ body{
   justify-self:flex-start;
  }
 
+.tag-fantasma {
+  border-radius: 60px;
+  background-color: rgb(133, 162, 175);
+  color: #1b1b1b;
+  width: 120px;
+  display: flex;
+  justify-self:flex-start;
+}
+
  .filtro {
   border-radius: 20px;
   width: 100px ;
   size: 100px;
   background-color: #caa482;
  }
+ .lenda-details {
+  padding: 0 1rem 1rem;
+}
+
+.lenda-details p {
+  margin: 0.7rem 0;
+  line-height: 1.5;
+  color: #d3d3d3;
+  font-size: 0.95rem;
+}
+
+.origem {
+  color: #a8dadc;
+  font-weight: bold;
+  display: block;
+}
+
+.descricao {
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+
+.episodio {
+  color: #f1c453;
+  font-weight: bold;
+}
+
+.vulnerabilidade {
+  color: #90be6d;
+  font-weight: bold;
+}
+
+.episodio-detalhe {
+  background-color: rgba(30, 30, 30, 0.7);
+  border-left: 3px solid #e63946;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.episodio-detalhe h5 {
+  color: #f1c453;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.episodio-detalhe p {
+  margin: 8px 0;
+  color: #d3d3d3;
+}
+
+.destaque-vilao {
+  color: #a41623;
+  font-weight: bold;
+}
+
+.destaque-aliado {
+  color: #457b9d;
+  font-weight: bold;
+}
+
+.destaque-mitologia {
+  color: #90be6d;
+  font-style: italic;
+}
