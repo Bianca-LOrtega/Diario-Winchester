@@ -63,7 +63,7 @@ const personagens = [`<div class="card">
         <p>Rufus é um caçador veterano e parceiro de Bobby Singer. Cínico e direto, ele desconfia de quase tudo, mas sua experiência é inestimável. <strong>1ª aparição: 13º episódio da 3ª temporada ("Ghostfacers")</strong></p>
     </div>`,
     `<div class="card">
-        <img src="../img/sam.jpg" alt="Sam Winchester">
+        <img src="../img/sam.jpeg" alt="Sam Winchester">
         <h3>Sam Winchester</h3>
         <strong class="tag-humano">Caçador</strong>
         <p>Sam é o irmão mais novo da família Winchester, conhecido por sua inteligência, empatia e forte senso moral. Sua compaixão o torna essencial para a esperança e redenção. <strong>1ª aparição: 1º episódio da 1ª temporada ("Pilot")</strong></p>
@@ -75,7 +75,7 @@ const personagens = [`<div class="card">
     <p>Gabriel, o "Trickster", é um arcanjo que se esconde na Terra pregando peças. Cansado da guerra celestial, ele revela coragem ao ajudar os Winchester. <strong>1ª aparição: 15º episódio da 2ª temporada ("Tall Tales")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/castiel.jpg" alt="Castiel">
+    <img src="../img/castiel.jpeg" alt="Castiel">
     <h3>Castiel</h3>
     <strong class="tag-anjo">Anjo</strong>
     <p>Castiel é um anjo do Senhor que desenvolve um laço profundo com os irmãos Winchester. Sua jornada é marcada pela descoberta da humanidade e questionamento das ordens divinas. <strong>1ª aparição: 1º episódio da 4ª temporada ("Lazarus Rising")</strong></p>
@@ -475,7 +475,7 @@ const anjos = [ `<div class="card">
     <p>Gabriel, o "Trickster", é um arcanjo que se esconde na Terra pregando peças. Cansado da guerra celestial, ele revela coragem ao ajudar os Winchester. <strong>1ª aparição: 15º episódio da 2ª temporada ("Tall Tales")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/castiel.jpg" alt="Castiel">
+    <img src="../img/castiel.jpeg" alt="Castiel">
     <h3>Castiel</h3>
     <strong class="tag-anjo">Anjo</strong>
     <p>Castiel é um anjo do Senhor que desenvolve um laço profundo com os irmãos Winchester. Sua jornada é marcada pela descoberta da humanidade e questionamento das ordens divinas. <strong>1ª aparição: 1º episódio da 4ª temporada ("Lazarus Rising")</strong></p>
