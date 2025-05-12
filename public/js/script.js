@@ -372,6 +372,31 @@ const personagens = [`<div class="card">
 <h3>Wayne</h3>
 <strong class="tag-humano">Caçador Aposentado</strong>
 <p>Caçador veterano que aparece no episódio "Weekend at Bobby's". Mostra a rede de apoio por trás dos Winchesters. <strong>1ª aparição: 4º episódio da 6ª temporada ("Weekend at Bobby's")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/bela-talbot.jpg" alt="Bela Talbot">
+    <h3>Bela Talbot</h3>
+    <strong class="tag-humana">Humana</strong>
+    <p>Bela Talbot é uma ladra de artefatos sobrenaturais que age por interesse próprio, vendendo itens mágicos no mercado negro. Misteriosa e sedutora, ela manipula os irmãos sempre que necessário, mas esconde um passado sombrio e doloroso. <strong>1ª aparição: Episódio 3 da 3ª temporada ("Bad Day at Black Rock")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/eve.jpg" alt="Eve">
+    <h3>Eve</h3>
+    <strong class="tag-vilao">Vilã Primordial</strong>
+    <p>Conhecida como a "Mãe de Todos", Eve é a criadora dos monstros. Surgida do Purgatório, ela busca vingança contra os humanos por caçarem suas criações. <strong>1ª aparição: 12º episódio da 6ª temporada ("Like a Virgin")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/miguel.jpg" alt="Miguel">
+    <h3>Miguel</h3>
+    <strong class="tag-mitologia">Arcanjo</strong>
+    <p>Um dos arcanjos mais poderosos, Miguel foi designado para liderar o Céu na guerra contra Lúcifer. Determinado a cumprir o destino bíblico, ele tentou usar Dean como receptáculo. <strong>1ª aparição: 18º episódio da 4ª temporada ("The Monster at the End of This Book")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/lisa.jpg" alt="Lisa Braeden">
+    <h3>Lisa Braeden</h3>
+    <strong class="tag-drama">Conexão Emocional</strong>
+    <p>Lisa é um antigo caso de Dean que se torna um elo importante com a vida normal. Ela representa o que Dean poderia ter tido fora da vida de caçador. <strong>1ª aparição: 3º episódio da 3ª temporada ("The Kids Are Alright")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/ben.jpg" alt="Ben Braeden">
+    <h3>Ben Braeden</h3>
+    <strong class="tag-drama">Laço Familiar</strong>
+    <p>Filho de Lisa, Ben se conecta com Dean de forma quase paternal. Apesar de não ser seu filho biológico, Dean o trata como tal, vivenciando o papel de pai. <strong>1ª aparição: 3º episódio da 3ª temporada ("The Kids Are Alright")</strong></p>
 </div>`
 
 ]
@@ -508,6 +533,11 @@ const anjos = [ `<div class="card">
     <h3>Joshua</h3>
     <strong class="tag-anjo">Anjo</strong>
     <p>Joshua é o anjo que se comunica diretamente com Deus, representando sabedoria e paz. Sua figura é uma das poucas vozes divinas genuínas. <strong>1ª aparição: 18º episódio da 5ª temporada ("Point of No Return")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/miguel.jpg" alt="Miguel">
+    <h3>Miguel</h3>
+    <strong class="tag-mitologia">Arcanjo</strong>
+    <p>Um dos arcanjos mais poderosos, Miguel foi designado para liderar o Céu na guerra contra Lúcifer. Determinado a cumprir o destino bíblico, ele tentou usar Dean como receptáculo. <strong>1ª aparição: 18º episódio da 4ª temporada ("The Monster at the End of This Book")</strong></p>
 </div>`
 
 ]
@@ -699,6 +729,11 @@ const monstros = [  `<div class="card">
     <h3>Kitsune</h3>
     <strong class="tag-monstro">Raposa Sobrenatural</strong>
     <p>Espírito de raposa da mitologia japonesa que se alimenta de glândulas pineais humanas. <strong>1ª aparição: 13º episódio da 6ª temporada ("Unforgiven")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/eve.jpg" alt="Eve">
+    <h3>Eve</h3>
+    <strong class="tag-monstro">Vilã Primordial</strong>
+    <p>Conhecida como a "Mãe de Todos", Eve é a criadora dos monstros. Surgida do Purgatório, ela busca vingança contra os humanos por caçarem suas criações. <strong>1ª aparição: 12º episódio da 6ª temporada ("Like a Virgin")</strong></p>
 </div>`
 
 ]
@@ -762,6 +797,21 @@ const comum = [  `<div class="card">
     <h3>Wayne</h3>
     <strong class="tag-humano">Caçador Aposentado</strong>
     <p>Caçador veterano que aparece no episódio "Weekend at Bobby's". Mostra a rede de apoio por trás dos Winchesters. <strong>1ª aparição: 4º episódio da 6ª temporada ("Weekend at Bobby's")</strong></p>
+</div>`, `<div class="card">
+    <img src="../img/bela-talbot.jpg" alt="Bela Talbot">
+    <h3>Bela Talbot</h3>
+    <strong class="tag-humana">Humana</strong>
+    <p>Bela Talbot é uma ladra de artefatos sobrenaturais que age por interesse próprio, vendendo itens mágicos no mercado negro. Misteriosa e sedutora, ela manipula os irmãos sempre que necessário, mas esconde um passado sombrio e doloroso. <strong>1ª aparição: Episódio 3 da 3ª temporada ("Bad Day at Black Rock")</strong></p>
+</div>`, `<div class="card">
+<img src="../img/lisa.jpg" alt="Lisa Braeden">
+<h3>Lisa Braeden</h3>
+<strong class="tag-drama">Conexão Emocional</strong>
+<p>Lisa é um antigo caso de Dean que se torna um elo importante com a vida normal. Ela representa o que Dean poderia ter tido fora da vida de caçador. <strong>1ª aparição: 3º episódio da 3ª temporada ("The Kids Are Alright")</strong></p>
+</div>`, `<div class="card">
+<img src="../img/ben.jpg" alt="Ben Braeden">
+<h3>Ben Braeden</h3>
+<strong class="tag-drama">Laço Familiar</strong>
+<p>Filho de Lisa, Ben se conecta com Dean de forma quase paternal. Apesar de não ser seu filho biológico, Dean o trata como tal, vivenciando o papel de pai. <strong>1ª aparição: 3º episódio da 3ª temporada ("The Kids Are Alright")</strong></p>
 </div>`
     
 ]
