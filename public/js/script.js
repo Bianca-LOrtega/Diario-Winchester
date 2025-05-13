@@ -39,18 +39,6 @@ const personagens = [`<div class="card">
         <p>Ellen é uma caçadora forte e determinada que administra o bar "The Roadhouse". Sua coragem e senso de proteção fazem dela uma aliada valiosa. <strong>1ª aparição: 2º episódio da 2ª temporada ("Everybody Loves a Clown")</strong></p>
     </div>`,
     `<div class="card">
-        <img src="../img/eileen.jpg" alt="Eileen Leahy">
-        <h3>Eileen Leahy</h3>
-        <strong class="tag-humano">Caçadora</strong>
-        <p>Eileen é uma caçadora surda da família Leahy, que se alia a Sam e Dean. Sua habilidade e resiliência quebram estereótipos. <strong>1ª aparição: 11º episódio da 11ª temporada ("Into the Mystic")</strong></p>
-    </div>`,
-    `<div class="card">
-        <img src="../img/garth.jpg" alt="Garth Fitzgerald IV">
-        <h3>Garth Fitzgerald IV</h3>
-        <strong class="tag-humano">Caçador</strong>
-        <p>Garth é um caçador atrapalhado mas bem-intencionado, que eventualmente se torna um lobisomem "do bem". Sua personalidade otimista traz alívio cômico. <strong>1ª aparição: 8º episódio da 7ª temporada ("Season Seven, Time for a Wedding!")</strong></p>
-    </div>`,
-    `<div class="card">
         <img src="../img/jo.jpg" alt="Jo Harvelle">
         <h3>Jo Harvelle</h3>
         <strong class="tag-humano">Caçadora</strong>
@@ -128,12 +116,6 @@ const personagens = [`<div class="card">
     <strong class="tag-anjo">Anjo</strong>
     <p>Uriel é um anjo cruel e obediente às hierarquias celestiais. Sua falta de compaixão o torna um executor temido. <strong>1ª aparição: 2º episódio da 4ª temporada ("Are You There, God? It's Me, Dean Winchester")</strong></p>
 </div>`,
-`<div class="card">
-    <img src="../img/joshua.jpg" alt="Joshua">
-    <h3>Joshua</h3>
-    <strong class="tag-anjo">Anjo</strong>
-    <p>Joshua é o anjo que se comunica diretamente com Deus, representando sabedoria e paz. Sua figura é uma das poucas vozes divinas genuínas. <strong>1ª aparição: 18º episódio da 5ª temporada ("Point of No Return")</strong></p>
-</div>`, 
 `<div class="card">
         <img src="../img/crowley.jpg" alt="Crowley">
         <h3>Crowley</h3>
@@ -285,13 +267,13 @@ const personagens = [`<div class="card">
     <p>Pode assumir a forma de qualquer pessoa que tocar. Um dos inimigos mais traiçoeiros dos Winchester. <strong>1ª aparição: 6º episódio da 1ª temporada ("Skin")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/rukus.jpg" alt="Rakshasa">
+    <img src="../img/Rakshasa.webp" alt="Rakshasa">
     <h3>Rakshasa</h3>
     <strong class="tag-monstro">Demônio Hindu</strong>
     <p>Criatura da mitologia hindu que se alimenta de pesadelos humanos. Aparece como um homem com cabeça de tigre. <strong>1ª aparição: 11º episódio da 7ª temporada ("Adventures in Babysitting")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/shtriga.jpg" alt="Shtriga">
+    <img src="../img/shtriga.jfif" alt="Shtriga">
     <h3>Shtriga</h3>
     <strong class="tag-monstro">Bruxa Vampírica</strong>
     <p>Bruxa da mitologia albanesa que drena a força vital das crianças. Uma das primeiras caçadas de John Winchester. <strong>1ª aparição: 17º episódio da 1ª temporada ("Hell House")</strong></p>
@@ -313,7 +295,8 @@ const personagens = [`<div class="card">
     <h3>Kitsune</h3>
     <strong class="tag-monstro">Raposa Sobrenatural</strong>
     <p>Espírito de raposa da mitologia japonesa que se alimenta de glândulas pineais humanas. <strong>1ª aparição: 13º episódio da 6ª temporada ("Unforgiven")</strong></p>
-</div>`,  `<div class="card">
+</div>`, 
+ `<div class="card">
 <img src="../img/jody.jpg" alt="Jody Mills">
 <h3>Jody Mills</h3>
 <strong class="tag-humano">Xerife</strong>
@@ -380,14 +363,10 @@ const personagens = [`<div class="card">
 </div>`, `<div class="card">
     <img src="../img/eve.jpg" alt="Eve">
     <h3>Eve</h3>
-    <strong class="tag-vilao">Vilã Primordial</strong>
+    <strong class="tag-monstro">Vilã Primordial</strong>
     <p>Conhecida como a "Mãe de Todos", Eve é a criadora dos monstros. Surgida do Purgatório, ela busca vingança contra os humanos por caçarem suas criações. <strong>1ª aparição: 12º episódio da 6ª temporada ("Like a Virgin")</strong></p>
-</div>`, `<div class="card">
-    <img src="../img/miguel.jpg" alt="Miguel">
-    <h3>Miguel</h3>
-    <strong class="tag-mitologia">Arcanjo</strong>
-    <p>Um dos arcanjos mais poderosos, Miguel foi designado para liderar o Céu na guerra contra Lúcifer. Determinado a cumprir o destino bíblico, ele tentou usar Dean como receptáculo. <strong>1ª aparição: 18º episódio da 4ª temporada ("The Monster at the End of This Book")</strong></p>
-</div>`, `<div class="card">
+</div>`,
+ `<div class="card">
     <img src="../img/lisa.jpg" alt="Lisa Braeden">
     <h3>Lisa Braeden</h3>
     <strong class="tag-drama">Conexão Emocional</strong>
@@ -701,13 +680,13 @@ const monstros = [  `<div class="card">
     <p>Pode assumir a forma de qualquer pessoa que tocar. Um dos inimigos mais traiçoeiros dos Winchester. <strong>1ª aparição: 6º episódio da 1ª temporada ("Skin")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/rukus.jpg" alt="Rakshasa">
+    <img src="../img/Rakshasa.webp" alt="Rakshasa">
     <h3>Rakshasa</h3>
     <strong class="tag-monstro">Demônio Hindu</strong>
     <p>Criatura da mitologia hindu que se alimenta de pesadelos humanos. Aparece como um homem com cabeça de tigre. <strong>1ª aparição: 11º episódio da 7ª temporada ("Adventures in Babysitting")</strong></p>
 </div>`,
 `<div class="card">
-    <img src="../img/shtriga.jpg" alt="Shtriga">
+    <img src="../img/shtriga.jfif" alt="Shtriga">
     <h3>Shtriga</h3>
     <strong class="tag-monstro">Bruxa Vampírica</strong>
     <p>Bruxa da mitologia albanesa que drena a força vital das crianças. Uma das primeiras caçadas de John Winchester. <strong>1ª aparição: 17º episódio da 1ª temporada ("Hell House")</strong></p>

@@ -75,11 +75,18 @@ main {
 
 /* destaques */
 .destaques {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 
 .temporadas-destaque {
   margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   align-items: center;
 }
 
@@ -506,4 +513,153 @@ footer {
   color: #601f24;
   border: 1px solid rgba(69, 15, 19, 0.753);
 
+}
+
+.login-container {
+  background-color: rgba(20, 20, 20, 0.7);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-box h1 {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #e0cba8;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 10px 0 5px;
+  color: #e6e6e6;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #8b0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #a32020;
+}
+
+.cadastrar {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cadastrar a {
+  color: #c9a760;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.cadastrar a:hover {
+  text-decoration: underline;
+}
+
+.main-login {
+  background-image:url('../img/roxo.png');
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cadastrinho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.cadastro-container {
+  background-color: rgba(20, 20, 20, 0.75);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+  max-width: 450px;
+  width: 100%;
+}
+
+.cadastro-box h1 {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #e0cba8;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 10px 0 5px;
+  color: #e6e6e6;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #8b0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #a32020;
+}
+
+.ja-tem-conta {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.ja-tem-conta a {
+  color: #c9a760;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.ja-tem-conta a:hover {
+  text-decoration: underline;
 }
