@@ -18,7 +18,7 @@
     --new-white: #E8E8E8;
 }
 
-body {
+.main-quiz {
     color: var(--new-black);
     background-color: var(--new-white);
     font-family: Verdana, Geneva, Tahoma, sans-serif;

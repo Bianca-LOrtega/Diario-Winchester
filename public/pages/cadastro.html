@@ -20,7 +20,7 @@
             <nav class="nav">
                 <ul class="navbar">
                     <li>
-                        <a href="../pages/home.html">Home</a>
+                        <a href="../pages/index.html">Home</a>
                     </li>
                     <li>
                         <a href="../pages/personagens.html">Personagens</a>
@@ -31,16 +31,19 @@
                     <li>
                         <a href="../pages/quiz.html">Quiz</a>
                     </li>
-                    <li>
-                        <a>|</a>
-                    </li>
-                    <li>
-                        <a class="login" href="../pages/login.html">Login</a>
-                    </li>
-                    <li>
-                        <a class="login"  href="../pages/cadastro.html">Cadastro</a>
-                    </li>
                 </ul>
+
+                <div>
+                    <ul class="navbar-login" >
+                        <li>
+                            <a class="login" href="../pages/login.html">Login</a>
+                        </li>
+                        <li>
+                            <a class="login" href="../pages/cadastro.html">Cadastro</a>
+                        </li>
+                    </ul>
+                </div>
+
             </nav>
         </div>
     </header>
@@ -63,7 +66,7 @@
                 <label for="confirmar">Confirmar Senha</label>
                 <input type="password" id="confirmar" placeholder="••••••••" required />
         
-                <button type="submit">Cadastrar</button>
+                <button class="button-log" >Cadastrar</button>
                 <p class="ja-tem-conta">Já tem conta? <a href="login.html">Entrar</a></p>
               </form>
             </div>

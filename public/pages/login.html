@@ -20,7 +20,7 @@
             <nav class="nav">
                 <ul class="navbar">
                     <li>
-                        <a href="../pages/home.html">Home</a>
+                        <a href="../pages/index.html">Home</a>
                     </li>
                     <li>
                         <a href="../pages/personagens.html">Personagens</a>
@@ -31,16 +31,19 @@
                     <li>
                         <a href="../pages/quiz.html">Quiz</a>
                     </li>
-                    <li>
-                        <a>|</a>
-                    </li>
-                    <li>
-                        <a class="login" href="../pages/login.html">Login</a>
-                    </li>
-                    <li>
-                        <a class="login" href="../pages/cadastro.html">Cadastro</a>
-                    </li>
                 </ul>
+
+                <div>
+                    <ul class="navbar-login" >
+                        <li>
+                            <a class="login" href="../pages/login.html">Login</a>
+                        </li>
+                        <li>
+                            <a class="login" href="../pages/cadastro.html">Cadastro</a>
+                        </li>
+                    </ul>
+                </div>
+
             </nav>
         </div>
     </header>
@@ -57,9 +60,9 @@
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" placeholder="••••••••" required />
 
-                    <button type="submit">Entrar</button>
+                    <button class="button-log">Entrar</button>
                     
-                    <p class="cadastrar"><small class="cadastrinho" >Não tem cadastro? </small><a href="/public/pages/cadastro.html"> Cadastrar
+                    <p class="cadastrar"><small class="cadastrinho" >Não tem cadastro? </small><a href="../pages/cadastro.html"> Cadastrar
                         </a></p>
                 </form>
             </div>
