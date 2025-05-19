@@ -10,7 +10,7 @@
     <title> Quiz </title>
 </head>
 
-<body onload="onloadEsconder()" >
+<body onload="onloadEsconder()">
 
     <header>
         <div class="container">
@@ -28,21 +28,14 @@
                     <li>
                         <a href="../pages/temporadas.html">Temporadas</a>
                     </li>
+                    <li><a href="../../dashboard/dashboard.html">Dashboard</a></li>
                 </ul>
-
-                <div>
-                    <ul class="navbar-login" >
-                        <li>
-                            <a class="login" href="../pages/login.html">Login</a>
-                        </li>
-                    </ul>
-                </div>
 
             </nav>
         </div>
     </header>
 
-    <main class="main-quiz"  >
+    <main class="main-quiz">
 
         <div class="destaques">
             <h2>Teste seus conhecimentos da série Supernatural </h2>
@@ -50,7 +43,7 @@
 
         <div class="quiz-jogo" id="pontuacaoEJogo">
             <button class="btn-quiz" id="btnIniciarQuiz" class="btn-quiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-    
+
             <div id="pontuacao" class="flex-colunar width-fit-content border pontuar ">
                 <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8 pontuacaoDurante pontuacaoFinal ">
                     <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
@@ -63,18 +56,19 @@
                     <span id="msgFinal" class="width-fit-content">***</span>
                 </div>
             </div>
-    
+
             <div id="jogo" class="width-fit-content flex-colunar border jogoInteiro ">
-    
+
                 <div id="infoQuestao" class="padding-8 informacao ">
-                    <span>Questão atual: <span class="perguntAtual" id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    <span>Questão atual: <span class="perguntAtual" id="spanNumeroDaQuestaoAtual"></span> de <span
+                            id="qtdQuestoes"></span>
                         questões.</span>
                 </div>
-    
+
                 <div id="perguntaDaQuestaoAtual" class="padding-8">
                     <span id="spanQuestaoExibida" class="text-bold"></span>
                 </div>
-    
+
                 <div id="opcoes" class="flex-colunar padding-8">
                     <span>
                         <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
@@ -93,45 +87,45 @@
                         <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
                     </span>
                 </div>
-    
+
                 <div id="botoes" class="flex-colunar padding-8">
                     <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
                     <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                    <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> 
+                    <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
                     <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
                 </div>
-    
+
             </div>
         </div>
 
         <section class="formulario-preferencias">
             <h2>Conte pra gente: Qual é a sua história?</h2>
-                <div class="form-group">
-                    <label for="nomeUsuario">Seu Nome:</label>
-                    <input class="input-formulario"  type="text" id="nomeUsuario"  >
-                </div>
+            <div class="form-group">
+                <label for="nomeUsuario">Seu Nome:</label>
+                <input class="input-formulario" type="text" id="nomeUsuario">
+            </div>
 
-                <div class="form-group">
-                    <label for="personagemFavorito">Personagem Favorito:</label>
-                    <input class="input-formulario"  type="text" id="personagemFavorito"  >
-                </div>
+            <div class="form-group">
+                <label for="personagemFavorito">Personagem Favorito:</label>
+                <input class="input-formulario" type="text" id="personagemFavorito">
+            </div>
 
-                <div class="form-group">
-                    <label for="episodioAmado">Episódio que mais gostou:</label>
-                    <input class="input-formulario"  type="text" id="episodioAmado" >
-                </div>
+            <div class="form-group">
+                <label for="episodioAmado">Episódio que mais gostou:</label>
+                <input class="input-formulario" type="text" id="episodioAmado">
+            </div>
 
-                <div class="form-group">
-                    <label for="monstroAssustador">Monstro/Criatura mais assustadora:</label>
-                    <input class="input-formulario"  type="text" id="monstroAssustador" >
-                </div>
+            <div class="form-group">
+                <label for="monstroAssustador">Monstro/Criatura mais assustadora:</label>
+                <input class="input-formulario" type="text" id="monstroAssustador">
+            </div>
 
-                <div class="form-group">
-                    <label for="mensagem">Mensagem ou curiosidade que gostaria de compartilhar:</label>
-                    <textarea id="mensagem" rows="4"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem ou curiosidade que gostaria de compartilhar:</label>
+                <textarea id="mensagem" rows="4"></textarea>
+            </div>
 
-                <button class="botao-enviar" onclick="enviar()" >Enviar Preferências</button>
+            <button class="botao-enviar" onclick="enviar()">Enviar Preferências</button>
         </section>
 
     </main>
@@ -174,7 +168,7 @@
         {
             pergunta: "Qual é o apelido do demônio Crowley?",
             alternativaA: " Rei do Inferno",
-            alternativaB: " Rei do Céu",                
+            alternativaB: " Rei do Céu",
             alternativaC: " Rei dos Mortos",
             alternativaD: " Rei dos Caçadores",
             alternativaCorreta: "alternativaA"
@@ -200,7 +194,7 @@
 
         {
             pergunta: "Qual é o nome do profeta que escreve os livros 'Supernatural'?",
-            alternativaA: " Bobby Singer",  
+            alternativaA: " Bobby Singer",
             alternativaB: " Castiel",
             alternativaC: " Gabriel",
             alternativaD: " Chuck Shurley",
@@ -209,7 +203,7 @@
 
         {
             pergunta: "Quem é o Cavaleiro do Inferno que Dean enfrenta com a Primeira Lâmina?",
-            alternativaA: " Abaddon",  
+            alternativaA: " Abaddon",
             alternativaB: "Lilith",
             alternativaC: " Azazel",
             alternativaD: " Meg",
@@ -228,7 +222,7 @@
         {
             pergunta: "Qual é a profissão dos irmãos como fachada?",
             alternativaA: " Caçadores de monstros",
-            alternativaB: " Detetives", 
+            alternativaB: " Detetives",
             alternativaC: " Jornalistas",
             alternativaD: "  Policial e advogado",
             alternativaCorreta: "alternativaB"
@@ -245,7 +239,7 @@
     let certas = 0
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
-    let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+    let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes - 1 ? true : false
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
@@ -405,14 +399,14 @@
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').classList.add("text-new-gray")
 
         btnProx.disabled = true
         btnSubmeter.disabled = true

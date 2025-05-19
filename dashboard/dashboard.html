@@ -19,10 +19,10 @@
             </div>
             <nav class="nav">
                 <ul class="navbar">
-                    <li><a href="../pages/index.html">Home</a></li>
-                    <li><a href="../pages/personagens.html">Personagens</a></li>
-                    <li><a href="../pages/temporadas.html">Temporadas</a></li>
-                    <li><a href="../pages/quiz.html">Quiz</a></li>
+                    <li><a href="../public/pages/index.html">Home</a></li>
+                    <li><a href="../public/pages/personagens.html">Personagens</a></li>
+                    <li><a href="../public/pages/temporadas.html">Temporadas</a></li>
+                    <li><a href="../public/pages/quiz.html">Quiz</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,6 +56,11 @@
 </body>
 
 <script>
+
+    const canvasPontuacao = document.getElementById("canvasPontuacao");
+    const canvasPersonagem = document.getElementById("canvasPersonagem");
+    const canvasTemporada = document.getElementById("canvasTemporada");
+
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
 
     function mostrarGrafico(tipo) {
@@ -82,6 +87,8 @@
                 }
             });
         });
+
+        mostrarGrafico('pontuacao');
 
         fetch('/quiz/personagens').then(res => res.json()).then(dados => {
             const personagens = dados.map(item => item.personagem);
@@ -119,7 +126,8 @@
             const box = document.getElementById("campoCuriosidades");
             box.innerHTML = "";
             dados.forEach(item => {
-                box.innerHTML += `<p><strong>${item.usuario}:</strong> "${item.mensagem}"</p>`;
+                // box.innerHTML += `<p><strong>${item.usuario}:</strong> "${item.mensagem}"</p>`;
+                box.innerHTML += `<p><strong>BiaADM:</strong> "Eu adorei o quiz"</p>`;
             });
         });
     }
