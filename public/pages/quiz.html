@@ -28,18 +28,12 @@
                     <li>
                         <a href="../pages/temporadas.html">Temporadas</a>
                     </li>
-                    <li>
-                        <a href="../pages/quiz.html">Quiz</a>
-                    </li>
                 </ul>
 
                 <div>
                     <ul class="navbar-login" >
                         <li>
                             <a class="login" href="../pages/login.html">Login</a>
-                        </li>
-                        <li>
-                            <a class="login" href="../pages/cadastro.html">Cadastro</a>
                         </li>
                     </ul>
                 </div>
@@ -110,6 +104,36 @@
             </div>
         </div>
 
+        <section class="formulario-preferencias">
+            <h2>Conte pra gente: Qual é a sua história?</h2>
+                <div class="form-group">
+                    <label for="nomeUsuario">Seu Nome:</label>
+                    <input class="input-formulario"  type="text" id="nomeUsuario"  >
+                </div>
+
+                <div class="form-group">
+                    <label for="personagemFavorito">Personagem Favorito:</label>
+                    <input class="input-formulario"  type="text" id="personagemFavorito"  >
+                </div>
+
+                <div class="form-group">
+                    <label for="episodioAmado">Episódio que mais gostou:</label>
+                    <input class="input-formulario"  type="text" id="episodioAmado" >
+                </div>
+
+                <div class="form-group">
+                    <label for="monstroAssustador">Monstro/Criatura mais assustadora:</label>
+                    <input class="input-formulario"  type="text" id="monstroAssustador" >
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem ou curiosidade que gostaria de compartilhar:</label>
+                    <textarea id="mensagem" rows="4"></textarea>
+                </div>
+
+                <button class="botao-enviar" onclick="enviar()" >Enviar Preferências</button>
+        </section>
+
     </main>
 
     <footer>
@@ -122,31 +146,95 @@
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Qual o nome do carro clássico dirigido por Dean Winchester?",
+            alternativaA: " Mustang 1967",
+            alternativaB: " Mustang 1967",
+            alternativaC: " Impala 1967",
+            alternativaD: " Charger 1970",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Quem é o anjo que se torna aliado dos Winchester?",
+            alternativaA: " Michael",
+            alternativaB: " Castiel",
+            alternativaC: "Raphael",
+            alternativaD: " Gabriel",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Qual é o nome do pai de Sam e Dean?",
+            alternativaA: " John Winchester",
+            alternativaB: " Bobby Singer",
+            alternativaC: " Castiel",
+            alternativaD: " Crowley",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual é o apelido do demônio Crowley?",
+            alternativaA: " Rei do Inferno",
+            alternativaB: " Rei do Céu",                
+            alternativaC: " Rei dos Mortos",
+            alternativaD: " Rei dos Caçadores",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual é o nome do demônio que possui a alma de Sam?",
+            alternativaA: " Azazel",
+            alternativaB: " Lilith",
+            alternativaC: " Crowley",
+            alternativaD: " Lucifer",
             alternativaCorreta: "alternativaD"
         },
 
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
+            pergunta: "Qual das seguintes opções é uma arma que pode matar quase tudo?",
+            alternativaA: " Colt",
+            alternativaB: " Winchester",
+            alternativaC: " Remington",
+            alternativaD: " Beretta",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual é o nome do profeta que escreve os livros 'Supernatural'?",
+            alternativaA: " Bobby Singer",  
+            alternativaB: " Castiel",
+            alternativaC: " Gabriel",
+            alternativaD: " Chuck Shurley",
             alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Quem é o Cavaleiro do Inferno que Dean enfrenta com a Primeira Lâmina?",
+            alternativaA: " Abaddon",  
+            alternativaB: "Lilith",
+            alternativaC: " Azazel",
+            alternativaD: " Meg",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Quem é o Nephilim filho de Lúcifer?",
+            alternativaA: " Jesse",
+            alternativaB: " Cain",
+            alternativaC: " Jack ",
+            alternativaD: " Samuel",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual é a profissão dos irmãos como fachada?",
+            alternativaA: " Caçadores de monstros",
+            alternativaB: " Detetives", 
+            alternativaC: " Jornalistas",
+            alternativaD: "  Policial e advogado",
+            alternativaCorreta: "alternativaB"
+
         }
+
 
     ]
 
