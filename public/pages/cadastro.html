@@ -31,7 +31,7 @@
                 </ul>
 
                 <div>
-                    <ul class="navbar-login" >
+                    <ul class="navbar-login">
                         <li>
                             <a class="login" href="../pages/login.html">Login</a>
                         </li>
@@ -46,28 +46,33 @@
 
         <div class="cadastro-container">
             <div class="cadastro-box">
-              <h1>Crie sua conta de caçador(a)</h1>
-              <form>
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="John Winchester" required />
-        
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="exemplo@caçadores.com" required />
-        
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="••••••••" required />
-        
-                <label for="confirmar">Confirmar Senha</label>
-                <input type="password" id="confirmar" placeholder="••••••••" required />
-        
-                <button onclick="cadastro()" class="button-log" >Cadastrar</button>
-                <p class="ja-tem-conta">Já tem conta? <a href="login.html">Entrar</a></p>
-              </form>
+                <h1>Crie sua conta de caçador(a)</h1>
+                <form>
+                    <label for="ipt_nome">Nome</label>
+                    <input type="text" id="ipt_nome" placeholder="John Winchester" required />
+
+                    <label for="ipt_email">E-mail</label>
+                    <input type="email" id="ipt_email" placeholder="exemplo@caçadores.com" required />
+
+                    <label for="ipt_senha">Senha</label>
+                    <input type="password" id="ipt_senha" placeholder="••••••••" required />
+
+                    <label for="ipt_confirmar">Confirmar Senha</label>
+                    <input type="password" id="ipt_confirmar" placeholder="••••••••" required />
+
+                    <button onclick="cadastro()" class="button-log">Cadastrar</button>
+
+                    <div id="cardErro" class="mensagem-erro" style="display: none;">
+                        <p id="mensagem_erro"> </p>
+                    </div>
+
+                    <p class="ja-tem-conta">Já tem conta? <a href="login.html">Entrar</a></p>
+                </form>
             </div>
-          </div>
+        </div>
 
     </main>
-    
+
     <footer>
         <p>© 2025 Diário Winchester | Feito com 💖 para os fãs de Supernatural.</p>
     </footer>
@@ -77,16 +82,65 @@
 
 <script>
     function cadastro() {
-      const idUsuario = localStorage.ID_USUARIO;
-  
-      if (idUsuario) {
-        alert('Já existe uma conta com esse email')
-        window.location.href = "login.html";
-      } else {
-        alert("Cadastro concluido");
-        window.location.href = "quiz.html";
-      }
+
+        const nome = ipt_nome.value;
+        const email = ipt_email.value;
+        const senha = ipt_senha.value;
+        const confimacao = ipt_confirmar.value;
+        const cardErro = document.getElementById("cardErro");
+
+
+        if (nome == '' || email == '' || senha == '' || confimacao == '') {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Preencha todos os campos!";
+            setTimeout(sumirMensagem, 5000);
+            return false;
+        } else if (!email.includes('@')) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "E-mail inválido (deve conter @)";
+            setTimeout(sumirMensagem, 5000);
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                    window.location.href = "login.html";
+                } else {
+                    return res.text().then(texto => {
+                        cardErro.style.display = "block";
+                        mensagem_erro.innerHTML = texto;
+                        setTimeout(sumirMensagem, 5000);
+                    });
+                }
+            })
+            .catch(erro => {
+                console.error("Erro no cadastro:", erro);
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
+                setTimeout(sumirMensagem, 5000);
+            });
+
+        return false;
     }
-  </script>
+
+    function sumirMensagem() {
+        const cardErro = document.getElementById("cardErro");
+        cardErro.style.display = "none";
+    }
+
+
+</script>
 
 </html>

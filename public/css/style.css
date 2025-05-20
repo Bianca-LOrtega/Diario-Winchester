@@ -1016,9 +1016,6 @@ input {
   cursor: pointer;
 }
 
-.btns-dash button:hover {
-  background-color: #a52a2a;
-}
 
 .grafico {
   width: 400px;
@@ -1033,4 +1030,17 @@ input {
 
 .display-none {
   display: none;
+}
+
+.mensagem-erro {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #8b0000; 
+  color: #f5f5dc;
+  border: 1px solid #a52a2a;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 0 10px #3b0000;
+  text-align: center;
+  transition: 0.3s ;
 }

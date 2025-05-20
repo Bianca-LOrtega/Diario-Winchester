@@ -7,15 +7,21 @@ create table usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
 	email VARCHAR(50),
-	senha VARCHAR(50),
+	senha VARCHAR(50)
+);
+
+create table quiz (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	pergunta varchar(60)
 );
 
 create table resp_quiz (
-	id int PRIMARY KEY AUTO_INCREMENT,
+	fkpergunta int,
 	fkusuario int,
-	pontuacao decimal(7,3),
-	data date,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id) 
+	acerto int,
+	FOREIGN KEY (fkpergunta) REFERENCES quiz(id),
+	FOREIGN KEY (fkusuario) REFERENCES usuario(id),
+	PRIMARY KEY (fkpergunta, fkusuario)
 ); -- quiz - resposta n:n 
 
 create table formulario (
@@ -25,7 +31,7 @@ create table formulario (
 	perso_temido varchar(80),
 	temp_fav varchar(80),
 	text_area varchar(500),
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id) 
-); -- esse vai para usuario
+	FOREIGN KEY (fkusuario) REFERENCES usuario(id) 
+); 
 
 -------------------------------

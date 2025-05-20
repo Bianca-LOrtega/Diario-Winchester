@@ -31,7 +31,7 @@
                 </ul>
 
                 <div>
-                    <ul class="navbar-login" >
+                    <ul class="navbar-login">
                         <li>
                             <a class="login" href="../pages/login.html">Login</a>
                         </li>
@@ -48,15 +48,21 @@
             <div class="login-box">
                 <h1>Bem-vindo de volta, caçador(a)</h1>
                 <form>
-                    <label for="email">E-mail ou Nome de Usuário</label>
-                    <input type="text" id="email" placeholder="exemplo@caçadores.com" required />
+                    <label for="ipt_email">E-mail </label>
+                    <input type="text" id="ipt_email" placeholder="exemplo@caçadores.com" required />
 
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="••••••••" required />
+                    <label for="ipt_senha">Senha</label>
+                    <input type="password" id="ipt_senha" placeholder="••••••••" required />
 
-                    <button class="button-log">Entrar</button>
-                    
-                    <p class="cadastrar"><small class="cadastrinho" >Não tem cadastro? </small><a href="../pages/cadastro.html"> Cadastrar
+                    <button onclick="login()" class="button-log">Entrar</button>
+
+                    <div id="cardErro"  class="mensagem-erro" style="display: none;">
+                         <p id="mensagem_erro" > </p>
+                    </div>
+                   
+
+                    <p class="cadastrar"><small class="cadastrinho">Não tem cadastro? </small><a
+                            href="../pages/cadastro.html"> Cadastrar
                         </a></p>
                 </form>
             </div>
@@ -69,5 +75,79 @@
     </footer>
 
 </body>
+
+<script>
+    function login() {
+
+        const email = ipt_email.value;
+        const senha = ipt_senha.value;
+
+        if (email == '' || senha == '') {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Preencha todos os campos para continuar!";
+
+            finalizarAguardar();
+            return false;
+        }
+        else if (!email.includes('@')) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "email inválido (deve conter @)"
+
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    window.location = "../quiz.html";
+
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                alert( "Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+
+    
+</script>
 
 </html>
