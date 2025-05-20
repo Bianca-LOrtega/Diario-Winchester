@@ -34,6 +34,7 @@
         <div class="btns-dash">
             <button onclick="mostrarGrafico('pontuacao')">Pontuação</button>
             <button onclick="mostrarGrafico('personagem')">Personagens Favoritos</button>
+            <button onclick="mostrarGrafico('personagemNao')">Personagens Favoritos</button>
             <button onclick="mostrarGrafico('temporada')">Temporadas Favoritas</button>
             <button onclick="mostrarGrafico('curiosidades')">Curiosidades</button>
         </div>
@@ -44,6 +45,9 @@
             </div>
             <div id="grafico-personagem" class="grafico display-none">
                 <canvas id="canvasPersonagem"></canvas>
+            </div>
+             <div id="grafico-personagemNao" class="grafico display-none">
+                <canvas id="canvasPersonagemNao"></canvas>
             </div>
             <div id="grafico-temporada" class="grafico display-none">
                 <canvas id="canvasTemporada"></canvas>
@@ -59,6 +63,7 @@
 
     const canvasPontuacao = document.getElementById("canvasPontuacao");
     const canvasPersonagem = document.getElementById("canvasPersonagem");
+    const canvasPersonagemNao = document.getElementById("canvasPersonagemNao");
     const canvasTemporada = document.getElementById("canvasTemporada");
 
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
@@ -72,9 +77,9 @@
     }
 
     function carregarDadosDashboard() {
-        fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
-            const nomes = dados.map(item => item.nome);
-            const pontuacoes = dados.map(item => item.pontuacao);
+       // fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
+            const nomes = ['usuario1', 'usu3', 'admBi'] //dados.map(item => item.nome);
+            const pontuacoes = [10, 5, 8] //dados.map(item => item.pontuacao);
             new Chart(canvasPontuacao, {
                 type: 'bar',
                 data: {
@@ -86,12 +91,12 @@
                     }]
                 }
             });
-        });
+        //});
 
         mostrarGrafico('pontuacao');
 
-        fetch('/quiz/personagens').then(res => res.json()).then(dados => {
-            const personagens = dados.map(item => item.personagem);
+        fetch('/formulario/personagens').then(res => res.json()).then(dados => {
+            const personagens = dados.map(item => item.perso_fav);
             const qtd = dados.map(item => item.qtd);
             new Chart(canvasPersonagem, {
                 type: 'pie',
@@ -106,7 +111,23 @@
             });
         });
 
-        fetch('/quiz/temporadas').then(res => res.json()).then(dados => {
+        fetch('/formulario/personagensNao').then(res => res.json()).then(dados => {
+            const personagens = dados.map(item => item.perso_temido);
+            const qtd = dados.map(item => item.qtd);
+            new Chart(canvasPersonagemNao, {
+                type: 'pie',
+                data: {
+                    labels: personagens,
+                    datasets: [{
+                        label: 'Temidos',
+                        data: qtd,
+                        backgroundColor: ['#e63946', '#a8dadc', '#457b9d', '#1d3557']
+                    }]
+                }
+            });
+        });
+
+        fetch('/formulario/temporadas').then(res => res.json()).then(dados => {
             const temporadas = dados.map(item => item.temporada);
             const qtd = dados.map(item => item.qtd);
             new Chart(canvasTemporada, {
@@ -122,7 +143,7 @@
             });
         });
 
-        fetch('/quiz/curiosidades').then(res => res.json()).then(dados => {
+        fetch('/formulario/curiosidades').then(res => res.json()).then(dados => {
             const box = document.getElementById("campoCuriosidades");
             box.innerHTML = "";
             dados.forEach(item => {

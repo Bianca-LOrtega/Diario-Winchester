@@ -10,39 +10,22 @@ create table usuario (
 	senha VARCHAR(50),
 );
 
+create table resp_quiz (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	fkusuario int,
+	pontuacao decimal(7,3),
+	data date,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id) 
+); -- quiz - resposta n:n 
+
+create table formulario (
+	id int PRIMARY KEY AUTO_INCREMENT,
+	fkusuario int,
+	perso_fav varchar(80),
+	perso_temido varchar(80),
+	temp_fav varchar(80),
+	text_area varchar(500),
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id) 
+); -- esse vai para usuario
+
 -------------------------------
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
