@@ -29,7 +29,7 @@ create table formulario (
 	fkusuario int,
 	perso_fav varchar(80),
 	perso_temido varchar(80),
-	temp_fav varchar(80),
+	temp_fav int,
 	text_area varchar(500),
 	FOREIGN KEY (fkusuario) REFERENCES usuario(id) 
 ); 
@@ -37,7 +37,7 @@ create table formulario (
 -------------------------------
 
 
-insert into quiz (pergunta) values 
+insert into quiz (pergunta) values
 				("Qual o nome do carro clássico dirigido por Dean Winchester?"),
 				("Quem é o anjo que se torna aliado dos Winchester?"),
 				("Qual é o nome do pai de Sam e Dean?"),

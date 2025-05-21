@@ -2,16 +2,18 @@ var database = require("../database/config");
 
 function cadastrar(fkusuario, perso_fav, perso_temido, temp_fav, text_area) {
     var instrucao = `
-        INSERT INTO formulario (fkusuario, perso_fav, perso_temido, temp_fav, text_area)
-        VALUES (${fkusuario}, '${perso_fav}', '${perso_temido}', '${temp_fav}', '${text_area}');
+        INSERT INTO formulario (fkusuario, perso_fav, perso_temido, temp_fav, text_area) VALUES (?, ?, ?, ?, ?);
     `;
-    console.log("Executando SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    var valores = [fkusuario, perso_fav, perso_temido, temp_fav, text_area];
+
+    console.log("Executando SQL segura: \n" + instrucao);
+    return database.executar(instrucao, valores);
 }
+
 
 function personagens() {
     const sql = `
-        SELECT perso_fav, COUNT(*) as qtd
+        SELECT UPPER(perso_fav) AS personagem, COUNT(*) AS qtd
         FROM formulario
         GROUP BY perso_fav;
     `;
@@ -20,7 +22,7 @@ function personagens() {
 
 function personagensTemidos() {
     const sql = `
-        SELECT perso_temido, COUNT(*) as qtd
+        SELECT UPPER(perso_temido) AS personagem, COUNT(*) AS qtd
         FROM formulario
         GROUP BY perso_temido;
     `;
@@ -29,7 +31,7 @@ function personagensTemidos() {
 
 function temporadas() {
     const sql = `
-        SELECT temp_fav AS temporada, COUNT(*) as qtd
+        SELECT temp_fav AS temporada, COUNT(*) AS qtd
         FROM formulario
         GROUP BY temp_fav;
     `;

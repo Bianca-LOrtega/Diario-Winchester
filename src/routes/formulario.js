@@ -1,10 +1,7 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const formularioController = require("../controllers/formularioController");
 
-var formularioController = require("../controllers/formularioController");
-
-router.post("/cadastrar", function (req, res) {
-    formularioController.cadastrar(req, res);
-});
+router.post("/", formularioController.cadastrar);
 
 module.exports = router;

@@ -12,10 +12,11 @@ function cadastrar(req, res) {
             res.status(200).send("Formulário registrado com sucesso.");
         })
         .catch((erro) => {
-            console.error(erro);
-            res.status(500).json(erro.sqlMessage);
+            console.error("Erro ao cadastrar formulário:", erro); // <- MANTÉM ESSA LINHA
+            res.status(500).json(erro.sqlMessage || erro.message);
         });
 }
+
 
 function personagens(req, res) {
     formularioModel.personagens()

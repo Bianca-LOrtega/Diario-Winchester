@@ -107,38 +107,77 @@
             return false;
         }
 
-        fetch("/usuarios/cadastrar", {
+        fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nomeServer: nome,
                 emailServer: email,
                 senhaServer: senha
             })
-        })
-            .then(res => {
-                if (res.ok) {
-                    alert("Cadastro realizado com sucesso!");
-                    window.location.href = "login.html";
-                } else {
-                    return res.text().then(texto => {
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    
+
+                });
+                window.location = "../pages/login.html";
+            }
+            else {
+                fetch("/usuarios/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nomeServer: nome,
+                        emailServer: email,
+                        senhaServer: senha
+                    })
+                })
+                    .then(res => {
+                        if (res.ok) {
+                            alert("Cadastro realizado com sucesso!");
+                            window.location.href = "login.html";
+                        } else {
+                            return res.text().then(texto => {
+                                cardErro.style.display = "block";
+                                mensagem_erro.innerHTML = texto;
+                                setTimeout(sumirMensagem, 5000);
+                            });
+                        }
+                    })
+                    .catch(erro => {
+                        console.error("Erro no cadastro:", erro);
                         cardErro.style.display = "block";
-                        mensagem_erro.innerHTML = texto;
+                        mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
                         setTimeout(sumirMensagem, 5000);
                     });
-                }
-            })
-            .catch(erro => {
-                console.error("Erro no cadastro:", erro);
-                cardErro.style.display = "block";
-                mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
-                setTimeout(sumirMensagem, 5000);
-            });
+
+
+                return false;
+
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
         return false;
     }
+
+
 
     function sumirMensagem() {
         const cardErro = document.getElementById("cardErro");

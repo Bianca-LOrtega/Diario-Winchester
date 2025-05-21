@@ -28,7 +28,7 @@
                     <li>
                         <a href="../pages/temporadas.html">Temporadas</a>
                     </li>
-                    <li><a href="../../dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../pages/dashboard.html">Dashboard</a></li>
                 </ul>
 
             </nav>
@@ -111,8 +111,8 @@
             </div>
 
             <div class="form-group">
-                <label for="episodioAmado">Episódio que mais gostou:</label>
-                <input class="input-formulario" type="text" id="episodioAmado">
+                <label for="temp_fav">Temporada que mais gostou:</label>
+                <input class="input-formulario" type="text" id="temp_fav">
             </div>
 
             <div class="form-group">
@@ -414,6 +414,61 @@
         btnTentarNovamente.disabled = false
 
     }
+
+    function enviar() {
+        const nome = document.getElementById("nomeUsuario").value.trim();
+        const personagemFavorito = document.getElementById("personagemFavorito").value.trim();
+        const temporadaFavorita = document.getElementById("temp_fav").value.trim();
+        const monstroAssustador = document.getElementById("monstroAssustador").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+
+        // Validação básica
+        if (!nome || !personagemFavorito || !temporadaFavorita || !monstroAssustador || !mensagem) {
+            alert("Por favor, preencha todos os campos antes de enviar.");
+            return;
+        }
+
+        // Supondo que você já tenha o ID do usuário armazenado no sessionStorage
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        if (!idUsuario) {
+            alert("Usuário não autenticado. Faça login antes de enviar.");
+            return;
+        }
+
+        fetch("/formulario/cadastrar", {
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkusuario: Number(idUsuario),
+                perso_fav: personagemFavorito,
+                perso_temido: monstroAssustador,
+                temp_fav: temporadaFavorita,
+                text_area: mensagem
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Suas preferências foram enviadas com sucesso!");
+                    // Resetar formulário
+                    document.getElementById("nomeUsuario").value = "";
+                    document.getElementById("personagemFavorito").value = "";
+                    document.getElementById("temp_fav").value = "";
+                    document.getElementById("monstroAssustador").value = "";
+                    document.getElementById("mensagem").value = "";
+                } else {
+                    throw new Error("Erro ao enviar formulário.", res.status);
+                }
+            })
+            .catch(err => {
+                console.error("Erro na requisição:", err);
+                alert("Ocorreu um erro ao enviar suas preferências. Tente novamente mais tarde.");
+            });
+
+    } 
 </script>
 
 </html>

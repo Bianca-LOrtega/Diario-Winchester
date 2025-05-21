@@ -7,7 +7,7 @@
     <title>Dashboard | Diário Winchester</title>
     <link rel="shortcut icon" href="../img/diariopng.png" type="image/png">
 
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -111,7 +111,7 @@
             });
         });
 
-        fetch('/formulario/personagensNao').then(res => res.json()).then(dados => {
+        fetch('/formulario/personagensTemidos').then(res => res.json()).then(dados => {
             const personagens = dados.map(item => item.perso_temido);
             const qtd = dados.map(item => item.qtd);
             new Chart(canvasPersonagemNao, {
