@@ -34,7 +34,7 @@
         <div class="btns-dash">
             <button onclick="mostrarGrafico('pontuacao')">Pontuação</button>
             <button onclick="mostrarGrafico('personagem')">Personagens Favoritos</button>
-            <button onclick="mostrarGrafico('personagemNao')">Personagens Favoritos</button>
+            <button onclick="mostrarGrafico('personagemNao')">Personagens Temidos</button>
             <button onclick="mostrarGrafico('temporada')">Temporadas Favoritas</button>
             <button onclick="mostrarGrafico('curiosidades')">Curiosidades</button>
         </div>
@@ -77,9 +77,9 @@
     }
 
     function carregarDadosDashboard() {
-       // fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
-            const nomes = ['usuario1', 'usu3', 'admBi'] //dados.map(item => item.nome);
-            const pontuacoes = [10, 5, 8] //dados.map(item => item.pontuacao);
+        fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
+            const nomes = dados.map(item => item.nome);
+            const pontuacoes = dados.map(item => item.pontuacao);
             new Chart(canvasPontuacao, {
                 type: 'bar',
                 data: {
@@ -91,7 +91,7 @@
                     }]
                 }
             });
-        //});
+        });
 
         mostrarGrafico('pontuacao');
 
@@ -147,8 +147,7 @@
             const box = document.getElementById("campoCuriosidades");
             box.innerHTML = "";
             dados.forEach(item => {
-                // box.innerHTML += `<p><strong>${item.usuario}:</strong> "${item.mensagem}"</p>`;
-                box.innerHTML += `<p><strong>BiaADM:</strong> "Eu adorei o quiz"</p>`;
+             box.innerHTML += `<p><strong>${item.nome}:</strong> "${item.text_area}"</p>`;
             });
         });
     }

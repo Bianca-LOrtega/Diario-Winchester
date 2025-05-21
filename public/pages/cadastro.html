@@ -100,6 +100,11 @@
             mensagem_erro.innerHTML = "E-mail inválido (deve conter @)";
             setTimeout(sumirMensagem, 5000);
             return false;
+        } else if (senha !== confimacao) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "As senhas não coincidem.";
+            setTimeout(sumirMensagem, 5000);
+            return false;
         }
 
         fetch("/usuarios/cadastrar", {
@@ -139,7 +144,6 @@
         const cardErro = document.getElementById("cardErro");
         cardErro.style.display = "none";
     }
-
 
 </script>
 
