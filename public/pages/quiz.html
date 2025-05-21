@@ -342,26 +342,94 @@
             if (option.value === respostaQuestaoAtual) {
                 console.log("alternativaCorreta está no componente: " + alternativaCorreta)
                 alternativaCorreta = option.labels[0].id
-            }
-        })
 
-        // verifica se resposta assinalada é correta
-        options.forEach((option) => {
-            if (option.checked === true && option.value === respostaQuestaoAtual) {
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
-                certas++
-                document.getElementById("spanCertas").innerHTML = certas
-                numeroDaQuestaoAtual++
-            } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                const wrongLabelId = option.labels[0].id
 
-                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                tentativaIncorreta++
-                erradas++
-                document.getElementById("spanErradas").innerHTML = erradas
-                numeroDaQuestaoAtual++
+
+                // verifica se resposta assinalada é correta
+                options.forEach((option) => {
+                    if (option.checked === true && option.value === respostaQuestaoAtual) {
+                        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                        pontuacaoFinal++
+                        certas++
+                        const resp = 1
+
+                        fetch("/quiz/registrarResposta", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                idUsuario: sessionStorage.ID_USUARIO,
+                                numeroDaQuestaoAtual: fkpergunta,
+                                resp: acerto
+                            })
+
+                        })
+                            .then(res => {
+                                if (res.ok) {
+                                    alert("Cadastro realizado com sucesso!");
+                                    window.location.href = "login.html";
+                                } else {
+                                    return res.text().then(texto => {
+                                        cardErro.style.display = "block";
+                                        mensagem_erro.innerHTML = texto;
+                                        setTimeout(sumirMensagem, 5000);
+                                    });
+                                }
+                            })
+                            .catch(erro => {
+                                console.error("Erro no cadastro:", erro);
+                                cardErro.style.display = "block";
+                                mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
+                                setTimeout(sumirMensagem, 5000);
+                            });
+
+                        document.getElementById("spanCertas").innerHTML = certas
+                        numeroDaQuestaoAtual++
+                    } else if (option.checked && option.value !== respostaQuestaoAtual) {
+                        const wrongLabelId = option.labels[0].id
+
+                        document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+                        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                        tentativaIncorreta++
+                        erradas++
+
+                        const resp = 0
+
+                        fetch("/quiz/registrarResposta", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                idUsuario: sessionStorage.ID_USUARIO,
+                                numeroDaQuestaoAtual: fkpergunta,
+                                resp: acerto
+                            })
+
+                        })
+                            .then(res => {
+                                if (res.ok) {
+                                    alert("Cadastro realizado com sucesso!");
+                                    window.location.href = "login.html";
+                                } else {
+                                    return res.text().then(texto => {
+                                        cardErro.style.display = "block";
+                                        mensagem_erro.innerHTML = texto;
+                                        setTimeout(sumirMensagem, 5000);
+                                    });
+                                }
+                            })
+                            .catch(erro => {
+                                console.error("Erro no cadastro:", erro);
+                                cardErro.style.display = "block";
+                                mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
+                                setTimeout(sumirMensagem, 5000);
+                            });
+                        document.getElementById("spanErradas").innerHTML = erradas
+                        numeroDaQuestaoAtual++
+                    }
+                })
             }
         })
     }
