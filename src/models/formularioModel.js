@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function cadastrar(fkusuario, perso_fav, perso_temido, temp_fav, text_area) {
     var instrucao = `
-        INSERT INTO formulario (fkusuario, perso_fav, perso_temido, temp_fav, text_area) VALUES (?, ?, ?, ?, ?);
+        INSERT INTO formulario (fkusuario, perso_fav, perso_temido, temp_fav, text_area) VALUES ('${fkusuario}','${perso_fav}','${perso_temido}','${temp_fav}','${text_area}');
     `;
     var valores = [fkusuario, perso_fav, perso_temido, temp_fav, text_area];
 
