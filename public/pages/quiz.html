@@ -353,15 +353,20 @@
                         certas++
                         const resp = 1
 
-                        fetch("/quiz/registrarResposta", {
+
+                        fetch("/quiz/registrarRespostas", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
                                 idUsuario: sessionStorage.ID_USUARIO,
-                                numeroDaQuestaoAtual: fkpergunta,
-                                resp: acerto
+                                respostas: [
+                                    {
+                                       numeroDaQuestaoAtual: sessionStorage.fkpergunta,
+                                        resp: sessionStorage.acerto
+                                    }
+                                ]
                             })
 
                         })
@@ -386,6 +391,8 @@
 
                         document.getElementById("spanCertas").innerHTML = certas
                         numeroDaQuestaoAtual++
+
+
                     } else if (option.checked && option.value !== respostaQuestaoAtual) {
                         const wrongLabelId = option.labels[0].id
 
@@ -396,15 +403,19 @@
 
                         const resp = 0
 
-                        fetch("/quiz/registrarResposta", {
+                        fetch("/quiz/registrarRespostas", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
                                 idUsuario: sessionStorage.ID_USUARIO,
-                                numeroDaQuestaoAtual: fkpergunta,
-                                resp: acerto
+                                respostas: [
+                                    {
+                                        numeroDaQuestaoAtual: sessionStorage.fkpergunta,
+                                        resp: sessionStorage.acerto
+                                    }
+                                ]
                             })
 
                         })

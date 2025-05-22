@@ -30,7 +30,7 @@ app.use(cors());
 
 app.use("/", indexRouter); //
 app.use("/usuarios", usuarioRouter); //
-app.use("/pontuacao", quizRouter); //
+app.use("/quiz", quizRouter); //
 app.use("/formulario", formularioRouter); 
 
 

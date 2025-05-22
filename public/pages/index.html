@@ -158,14 +158,14 @@
 
 <script>
   function validarLoginParaQuiz() {
-    
+
     const usuarioLogado = sessionStorage.getItem('ID_USUARIO');
 
     if (usuarioLogado) {
-      // Usuário logado - redireciona para o quiz
+
       window.location.href = "../pages/quiz.html"; // Ajuste o caminho conforme sua estrutura
     } else {
-      // Usuário não logado - mostra alerta e redireciona para login
+        
       alert("Você precisa estar logado para acessar o quiz.");
       window.location.href = "../pages/login.html"; // Ajuste o caminho conforme sua estrutura
     }

@@ -27,6 +27,18 @@ function registrarRespostas(req, res) {
         });
 }
 
+function pontuacao(req, res) {
+    respQuizModel.pontuacao()
+        .then(result => {
+            res.status(200).json(result);
+        })
+        .catch(erro => {
+            console.error(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
-    registrarRespostas
+    registrarRespostas,
+    pontuacao
 };

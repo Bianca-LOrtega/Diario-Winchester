@@ -11,9 +11,11 @@ function registrarResposta(idUsuario, fkpergunta, acerto) {
 
 function pontuacao() {
     var instrucao = ` SELECT fkusuario, COUNT(*) AS qtd FROM resp_quiz
-                        WHERE acertos = 1
+                        WHERE acerto = 1
                         GROUP BY fkusuario;
-                    `
+                    `;
+    console.log("Executando SQL: \n" + instrucao);
+    return database.executar(instrucao);
 }
 
 module.exports = {
