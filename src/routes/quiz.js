@@ -4,8 +4,12 @@ var router = express.Router();
 var quizController = require("../controllers/quizController");
 
 // Registrar respostas e calcular os acertos
-router.post("/registrarRespostas", function (req, res) {
-    quizController.registrarRespostas(req, res);
+router.post("/registrarResposta", function (req, res) {
+    quizController.registrarResposta(req, res);
+});
+
+router.post("/pontuacao", function ( res) {
+    quizController.pontuacao( res);
 });
 
 module.exports = router;

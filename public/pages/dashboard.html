@@ -69,7 +69,7 @@
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
 
     function mostrarGrafico(tipo) {
-        const seções = ['pontuacao', 'personagem', 'temporada', 'curiosidades'];
+        const seções = ['pontuacao', 'personagem','personagemNao', 'temporada', 'curiosidades'];
         seções.forEach(s => {
             document.getElementById(`grafico-${s}`).classList.add("display-none");
         });
@@ -78,8 +78,8 @@
 
     function carregarDadosDashboard() {
         fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
-            const nomes = dados.map(item => item.nome);
-            const pontuacoes = dados.map(item => item.pontuacao);
+            const nomes = dados.map(item => item.sessionStorage.NOME_USUARIO);
+            const pontuacoes = dados.map(item => item.qtd);
             new Chart(canvasPontuacao, {
                 type: 'bar',
                 data: {
@@ -110,6 +110,7 @@
                 }
             });
         });
+        mostrarGrafico('personagem');
 
         fetch('/formulario/personagensTemidos').then(res => res.json()).then(dados => {
             const personagens = dados.map(item => item.perso_temido);
@@ -127,6 +128,8 @@
             });
         });
 
+        mostrarGrafico('personagemNao');
+
         fetch('/formulario/temporadas').then(res => res.json()).then(dados => {
             const temporadas = dados.map(item => item.temporada);
             const qtd = dados.map(item => item.qtd);
@@ -143,6 +146,8 @@
             });
         });
 
+        mostrarGrafico('temporada');
+
         fetch('/formulario/curiosidades').then(res => res.json()).then(dados => {
             const box = document.getElementById("campoCuriosidades");
             box.innerHTML = "";
@@ -150,6 +155,8 @@
              box.innerHTML += `<p><strong>${item.nome}:</strong> "${item.text_area}"</p>`;
             });
         });
+
+        mostrarGrafico('curiosidade');
     }
 </script>
 

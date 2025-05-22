@@ -107,17 +107,38 @@
 
             <div class="form-group">
                 <label for="personagemFavorito">Personagem Favorito:</label>
-                <input class="input-formulario" type="text" id="personagemFavorito">
+                <select name="personagensFav" id="personagemFavorito">
+                    
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="temp_fav">Temporada que mais gostou:</label>
-                <input class="input-formulario" type="text" id="temp_fav">
+                <select name="temporadas" id="temp_fav">
+                    <option value="1">Temporada 1</option>
+                    <option value="2">Temporada 2</option>
+                    <option value="3">Temporada 3</option>
+                    <option value="4">Temporada 4</option>
+                    <option value="5">Temporada 5</option>
+                    <option value="6">Temporada 6</option>
+                    <option value="7">Temporada 7</option>
+                    <option value="8">Temporada 8</option>
+                    <option value="9">Temporada 9</option>
+                    <option value="10">Temporada 10</option>
+                    <option value="11">Temporada 11</option>
+                    <option value="12">Temporada 12</option>
+                    <option value="13">Temporada 13</option>
+                    <option value="14">Temporada 14</option>
+                    <option value="15">Temporada 15</option>
+
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="monstroAssustador">Monstro/Criatura mais assustadora:</label>
-                <input class="input-formulario" type="text" id="monstroAssustador">
+                <select name="monstro" id="monstroAssustador">
+                    
+                </select>
             </div>
 
             <div class="form-group">
@@ -354,26 +375,22 @@
                         const resp = 1
 
 
-                        fetch("/quiz/registrarRespostas", {
+                        fetch("/quiz/registrarResposta", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
                                 idUsuario: sessionStorage.ID_USUARIO,
-                                respostas: [
-                                    {
-                                       numeroDaQuestaoAtual: sessionStorage.fkpergunta,
-                                        resp: sessionStorage.acerto
-                                    }
-                                ]
+                                fkpergunta : numeroDaQuestaoAtual + 1,
+                                acerto : resp
                             })
 
                         })
                             .then(res => {
                                 if (res.ok) {
-                                    alert("Cadastro realizado com sucesso!");
-                                    window.location.href = "login.html";
+                                    console.log("Cadastro realizado com sucesso!");
+                                    
                                 } else {
                                     return res.text().then(texto => {
                                         cardErro.style.display = "block";
@@ -403,26 +420,21 @@
 
                         const resp = 0
 
-                        fetch("/quiz/registrarRespostas", {
+                        fetch("/quiz/registrarResposta", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
                             },
                             body: JSON.stringify({
                                 idUsuario: sessionStorage.ID_USUARIO,
-                                respostas: [
-                                    {
-                                        numeroDaQuestaoAtual: sessionStorage.fkpergunta,
-                                        resp: sessionStorage.acerto
-                                    }
-                                ]
+                                fkpergunta : numeroDaQuestaoAtual + 1,
+                                acerto : resp
                             })
-
                         })
                             .then(res => {
                                 if (res.ok) {
-                                    alert("Cadastro realizado com sucesso!");
-                                    window.location.href = "login.html";
+                                    console.log("Cadastro realizado com sucesso!");
+                                    
                                 } else {
                                     return res.text().then(texto => {
                                         cardErro.style.display = "block";
@@ -496,9 +508,9 @@
 
     function enviar() {
         const nome = document.getElementById("nomeUsuario").value.trim();
-        const personagemFavorito = document.getElementById("personagemFavorito").value.trim();
-        const temporadaFavorita = document.getElementById("temp_fav").value.trim();
-        const monstroAssustador = document.getElementById("monstroAssustador").value.trim();
+        const personagemFavorito = document.getElementById("personagemFavorito").value;
+        const temporadaFavorita = document.getElementById("temp_fav").value;
+        const monstroAssustador = document.getElementById("monstroAssustador").value;
         const mensagem = document.getElementById("mensagem").value.trim();
 
         // Validação básica

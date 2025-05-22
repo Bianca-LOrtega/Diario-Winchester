@@ -9,4 +9,10 @@ router.post("/cadastrar", function (req, res) {
 });
 
 
+router.get("/personagens", formularioController.personagens);
+router.get("/personagensTemidos", formularioController.personagensTemidos);
+router.get("/temporadas", formularioController.temporadas);
+router.get("/curiosidades", formularioController.curiosidades);
+
+
 module.exports = router;

@@ -1,33 +1,25 @@
 var respQuizModel = require("../models/respQuizModel");
 
-function registrarRespostas(req, res) {
-    var { fkusuario, respostas } = req.body;  
+function registrarResposta(req, res) {
+    var fkpergunta = req.body.fkpergunta;
+    var acerto = req.body.acerto;
+    var idUsuario = req.body.idUsuario;
 
-    if (!fkusuario || !Array.isArray(respostas) || respostas.length == 0) {
-        return res.status(400).send("Faltando dados ou respostas inválidas!");
-    }
+    console.log("Dados recebidos:", idUsuario, fkpergunta, acerto);
 
-    // acertos do usuário 
-    var totalAcertos = respostas.filter(r => r.acerto === 1).length;
-
-    // Registrar cada resposta no banco
-    let promises = respostas.map(resposta => {
-        return respQuizModel.registrarResposta(fkusuario, resposta.fkpergunta, resposta.acerto);
-    });
-
-    Promise.all(promises)
+    respQuizModel.registrarResposta(idUsuario, fkpergunta, acerto)
         .then(() => {
             res.status(200).json({
-                mensagem: "Respostas registradas com sucesso!",
-                acertos: totalAcertos
+                mensagem: "Resposta registrada com sucesso!"
             });
         })
         .catch(erro => {
-            res.status(500).json(erro.sqlMessage);
+            console.error("Erro ao registrar resposta:", erro);
+            res.status(500).json(erro.sqlMessage || erro);
         });
 }
 
-function pontuacao(req, res) {
+function pontuacao( res) {
     respQuizModel.pontuacao()
         .then(result => {
             res.status(200).json(result);
@@ -39,6 +31,6 @@ function pontuacao(req, res) {
 }
 
 module.exports = {
-    registrarRespostas,
+    registrarResposta,
     pontuacao
 };

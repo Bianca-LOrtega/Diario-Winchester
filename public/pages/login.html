@@ -56,10 +56,10 @@
 
                     <button onclick="login()" class="button-log">Entrar</button>
 
-                    <div id="cardErro"  class="mensagem-erro" style="display: none;">
-                         <p id="mensagem_erro" > </p>
+                    <div id="cardErro" class="mensagem-erro" style="display: none;">
+                        <p id="mensagem_erro"> </p>
                     </div>
-                   
+
 
                     <p class="cadastrar"><small class="cadastrinho">Não tem cadastro? </small><a
                             href="../pages/cadastro.html"> Cadastrar
@@ -77,6 +77,7 @@
 </body>
 
 <script>
+
     function login() {
 
         const email = ipt_email.value;
@@ -87,59 +88,57 @@
             mensagem_erro.innerHTML = "Preencha todos os campos para continuar!";
 
             finalizarAguardar();
-            return false;
         }
         else if (!email.includes('@')) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "email inválido (deve conter @)"
 
-            return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
-        }
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: email,
-                senhaServer: senha
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    setInterval(sumirMensagem, 5000)
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+
+                        window.location = "../pages/quiz.html";
+
+                    });
+                } else {
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    window.location = "../pages/cadastro.html"
+
+                    alert("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    window.location = "../pages/quiz.html";
-
-                });
-            } else {
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                alert( "Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+        }
     }
 
     function sumirMensagem() {
