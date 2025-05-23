@@ -33,6 +33,7 @@
 
         <div class="btns-dash">
             <button onclick="mostrarGrafico('pontuacao')">Pontuação</button>
+            <button onclick="mostrarGrafico('erros')">Erros</button>
             <button onclick="mostrarGrafico('personagem')">Personagens Favoritos</button>
             <button onclick="mostrarGrafico('personagemNao')">Personagens Temidos</button>
             <button onclick="mostrarGrafico('temporada')">Temporadas Favoritas</button>
@@ -42,6 +43,9 @@
         <div id="graficos">
             <div id="grafico-pontuacao" class="grafico display-none">
                 <canvas id="canvasPontuacao"></canvas>
+            </div>
+            <div id="grafico-erros" class="grafico display-none">
+                <canvas id="canvasErros"></canvas>
             </div>
             <div id="grafico-personagem" class="grafico display-none">
                 <canvas id="canvasPersonagem"></canvas>
@@ -62,6 +66,7 @@
 <script>
 
     const canvasPontuacao = document.getElementById("canvasPontuacao");
+    const canvasErros = document.getElementById("canvasErros");
     const canvasPersonagem = document.getElementById("canvasPersonagem");
     const canvasPersonagemNao = document.getElementById("canvasPersonagemNao");
     const canvasTemporada = document.getElementById("canvasTemporada");
@@ -69,7 +74,7 @@
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
 
     function mostrarGrafico(tipo) {
-        const seções = ['pontuacao', 'personagem','personagemNao', 'temporada', 'curiosidades'];
+        const seções = ['pontuacao', 'erros' , 'personagem','personagemNao', 'temporada', 'curiosidades'];
         seções.forEach(s => {
             document.getElementById(`grafico-${s}`).classList.add("display-none");
         });
@@ -94,6 +99,24 @@
         });
 
         mostrarGrafico('pontuacao');
+
+        fetch('/quiz/erros').then(res => res.json()).then(dados => {
+            const nomes = dados.map(item => item.nome);
+            const erros = dados.map(item => item.qtd);
+            new Chart(canvasErros, {
+                type: 'bar',
+                data: {
+                    labels: nomes,
+                    datasets: [{
+                        label: 'Erros no Quiz',
+                        data: erros,
+                        backgroundColor: '#5A3A2B'
+                    }]
+                }
+            });
+        });
+
+        mostrarGrafico('erros');
 
         fetch('/formulario/personagens').then(res => res.json()).then(dados => {
             const personagens = dados.map(item => item.perso_fav);

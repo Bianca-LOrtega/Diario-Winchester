@@ -74,6 +74,10 @@ main {
   padding-top: 80px;
 }
 
+.principal-home {
+  padding: 40px 20px;
+}
+
 /* destaques */
 .destaques {
   display: flex;
@@ -1060,4 +1064,25 @@ input {
     justify-content: center;
     text-align: center;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+  background-image: url(../img/banner-Sam.jpg);
+  background-size: cover;
+  height: 800px;
+}
+
+.frase-banner  {
+  font-size: 30px;
+  margin-top: 250px;
+  margin-left: 100px;
+}
+
+.frase-banner2 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 200px;
 }

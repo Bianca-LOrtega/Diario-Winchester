@@ -12,4 +12,8 @@ router.get("/pontuacao", function ( req, res) {
     quizController.pontuacao( req, res);
 });
 
+router.get("/erros", function (req, res) {
+    quizController.erros(req, res)
+});
+
 module.exports = router;

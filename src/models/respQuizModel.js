@@ -28,7 +28,21 @@ function pontuacao() {
      return database.executar(instrucao);
 }
 
+function erros (){
+    var instrucao = `SELECT  u.nome as nome , COUNT(*) AS qtd FROM resp_quiz rq
+                        inner join usuario as u on u.id = rq.fkusuario
+                        WHERE acerto = 0
+                        GROUP BY nome;
+                    `;
+
+                    
+
+    console.log("Executando SQL: \n" + instrucao);
+     return database.executar(instrucao);
+}
+
 module.exports = {
     registrarResposta,
-    pontuacao
+    pontuacao, 
+    erros
 };
