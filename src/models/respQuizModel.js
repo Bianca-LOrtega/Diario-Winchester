@@ -16,13 +16,16 @@ function registrarResposta(idUsuario, fkpergunta, acerto) {
 }
 
 function pontuacao() {
-    var instrucao = ` SELECT rq.fkusuario, rq.COUNT(*) AS qtd, u.nome FROM resp_quiz rq
+    var instrucao = `SELECT  u.nome as nome , COUNT(*) AS qtd FROM resp_quiz rq
                         inner join usuario as u on u.id = rq.fkusuario
                         WHERE acerto = 1
-                        GROUP BY fkusuario;
+                        GROUP BY nome;
                     `;
+
+                    
+
     console.log("Executando SQL: \n" + instrucao);
-    return database.executar(instrucao);
+     return database.executar(instrucao);
 }
 
 module.exports = {

@@ -13,9 +13,10 @@ function cadastrar(fkusuario, perso_fav, perso_temido, temp_fav, text_area) {
 
 function personagens() {
     const sql = `
-        SELECT UPPER(perso_fav) AS perso_fav, COUNT(*) AS qtd
+        SELECT perso_fav AS perso_fav, COUNT(*) AS qtd
         FROM formulario
-        GROUP BY perso_fav;
+        GROUP BY perso_fav
+        limit 4;
     `;
     return database.executar(sql);
 }
@@ -24,7 +25,8 @@ function personagensTemidos() {
     const sql = `
         SELECT perso_temido as perso_temido, COUNT(*) AS qtd
         FROM formulario
-        GROUP BY perso_temido;
+        GROUP BY perso_temido
+        limit 4;
     `;
     return database.executar(sql);
 }
@@ -40,8 +42,10 @@ function temporadas() {
 
 function curiosidades() {
     const sql = `
-        SELECT text_area
-        FROM formulario;
+        SELECT u.nome as usuario , f.text_area as text_area
+        FROM formulario as f
+        left join usuario as u on u.id = f.fkusuario
+        group by usuario, text_area;
     `;
     return database.executar(sql);
 }

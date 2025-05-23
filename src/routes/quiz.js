@@ -8,8 +8,8 @@ router.post("/registrarResposta", function (req, res) {
     quizController.registrarResposta(req, res);
 });
 
-router.post("/pontuacao", function ( res) {
-    quizController.pontuacao( res);
+router.get("/pontuacao", function ( req, res) {
+    quizController.pontuacao( req, res);
 });
 
 module.exports = router;

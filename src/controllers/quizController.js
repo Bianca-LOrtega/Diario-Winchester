@@ -19,13 +19,16 @@ function registrarResposta(req, res) {
         });
 }
 
-function pontuacao( res) {
+function pontuacao( req, res) {
     respQuizModel.pontuacao()
-        .then(result => {
-            res.status(200).json(result);
-        })
-        .catch(erro => {
-            console.error(erro);
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(function (erro) {
+            console.log("ERRO ao buscar pontuação: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }

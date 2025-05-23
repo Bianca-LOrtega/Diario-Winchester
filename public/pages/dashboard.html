@@ -78,7 +78,7 @@
 
     function carregarDadosDashboard() {
         fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
-            const nomes = dados.map(item => item.sessionStorage.NOME_USUARIO);
+            const nomes = dados.map(item => item.nome);
             const pontuacoes = dados.map(item => item.qtd);
             new Chart(canvasPontuacao, {
                 type: 'bar',
@@ -87,7 +87,7 @@
                     datasets: [{
                         label: 'Pontuação no Quiz',
                         data: pontuacoes,
-                        backgroundColor: '#8b0000'
+                        backgroundColor: '#5A3A2B'
                     }]
                 }
             });
@@ -105,7 +105,7 @@
                     datasets: [{
                         label: 'Favoritos',
                         data: qtd,
-                        backgroundColor: ['#e63946', '#a8dadc', '#457b9d', '#1d3557']
+                        backgroundColor: ['#A8B0B5', '#7A8C8E ', '#4A5C6A ', '#2C3E4F ']
                     }]
                 }
             });
@@ -122,7 +122,7 @@
                     datasets: [{
                         label: 'Temidos',
                         data: qtd,
-                        backgroundColor: ['#e63946', '#a8dadc', '#457b9d', '#1d3557']
+                        backgroundColor: ['#C4A494 ', '#A56B5D ', '#7A4A3C ', '#4D2B26 ']
                     }]
                 }
             });
@@ -138,9 +138,9 @@
                 data: {
                     labels: temporadas,
                     datasets: [{
-                        label: 'Favoritas',
+                        label: 'Temporadas Favoritas',
                         data: qtd,
-                        backgroundColor: '#6a994e'
+                        backgroundColor: '#5F6A4F '
                     }]
                 }
             });
@@ -150,13 +150,16 @@
 
         fetch('/formulario/curiosidades').then(res => res.json()).then(dados => {
             const box = document.getElementById("campoCuriosidades");
+
+            console.log(dados);
+            
             box.innerHTML = "";
             dados.forEach(item => {
-             box.innerHTML += `<p><strong>${item.nome}:</strong> "${item.text_area}"</p>`;
+             box.innerHTML += `<p><strong>${ item.usuario }:</strong> "${item.text_area}"</p>`;
             });
         });
 
-        mostrarGrafico('curiosidade');
+        mostrarGrafico('curiosidades');
     }
 </script>
 
