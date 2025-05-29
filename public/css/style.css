@@ -188,6 +188,7 @@ textarea {
   border-radius: 5px;
   background-color: #554939;
   color: #e0d4b7;
+  resize: vertical;
 }
 
 .input-formulario {
@@ -199,9 +200,6 @@ textarea {
   color: #e0d4b7;
 }
 
-textarea {
-  resize: vertical;
-}
 
 .botao-enviar {
   display: inline-block;

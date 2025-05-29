@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Diário Winchester</title>
     <link rel="shortcut icon" href="../img/diariopng.png" type="image/png">
-
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="carregarDadosDashboard()">
+
     <header>
         <div class="container">
             <div class="inicio">
@@ -31,40 +31,42 @@
     <main class="dashboard">
         <h2>Olá, <span id="nome_usuario">usuário</span>! Bem-vindo à sua análise sobrenatural 👻</h2>
 
-        <div class="btns-dash">
-            <button onclick="mostrarGrafico('pontuacao')">Pontuação</button>
-            <button onclick="mostrarGrafico('erros')">Erros</button>
-            <button onclick="mostrarGrafico('personagem')">Personagens Favoritos</button>
-            <button onclick="mostrarGrafico('personagemNao')">Personagens Temidos</button>
-            <button onclick="mostrarGrafico('temporada')">Temporadas Favoritas</button>
-            <button onclick="mostrarGrafico('curiosidades')">Curiosidades</button>
-        </div>
-
         <div id="graficos">
-            <div id="grafico-pontuacao" class="grafico display-none">
+            <div id="grafico-pontuacao" class="grafico">
+                <h3>Pontuação no Quiz</h3>
                 <canvas id="canvasPontuacao"></canvas>
             </div>
-            <div id="grafico-erros" class="grafico display-none">
+
+            <div id="grafico-erros" class="grafico">
+                <h3>Erros no Quiz</h3>
                 <canvas id="canvasErros"></canvas>
             </div>
-            <div id="grafico-personagem" class="grafico display-none">
+
+            <div id="grafico-personagem" class="grafico">
+                <h3>Personagens Favoritos</h3>
                 <canvas id="canvasPersonagem"></canvas>
             </div>
-             <div id="grafico-personagemNao" class="grafico display-none">
+
+            <div id="grafico-personagemNao" class="grafico">
+                <h3>Personagens Temidos</h3>
                 <canvas id="canvasPersonagemNao"></canvas>
             </div>
-            <div id="grafico-temporada" class="grafico display-none">
+
+            <div id="grafico-temporada" class="grafico">
+                <h3>Temporadas Favoritas</h3>
                 <canvas id="canvasTemporada"></canvas>
             </div>
-            <div id="grafico-curiosidades" class="grafico display-none">
+
+            <div id="grafico-curiosidades" class="grafico">
+                <h3>Curiosidades</h3>
                 <div id="campoCuriosidades" class="curiosidades-box"></div>
             </div>
         </div>
     </main>
+
 </body>
 
 <script>
-
     const canvasPontuacao = document.getElementById("canvasPontuacao");
     const canvasErros = document.getElementById("canvasErros");
     const canvasPersonagem = document.getElementById("canvasPersonagem");
@@ -73,117 +75,114 @@
 
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
 
-    function mostrarGrafico(tipo) {
-        const seções = ['pontuacao', 'erros' , 'personagem','personagemNao', 'temporada', 'curiosidades'];
-        seções.forEach(s => {
-            document.getElementById(`grafico-${s}`).classList.add("display-none");
-        });
-        document.getElementById(`grafico-${tipo}`).classList.remove("display-none");
-    }
-
     function carregarDadosDashboard() {
-        fetch('/quiz/pontuacao').then(res => res.json()).then(dados => {
-            const nomes = dados.map(item => item.nome);
-            const pontuacoes = dados.map(item => item.qtd);
-            new Chart(canvasPontuacao, {
-                type: 'bar',
-                data: {
-                    labels: nomes,
-                    datasets: [{
-                        label: 'Pontuação no Quiz',
-                        data: pontuacoes,
-                        backgroundColor: '#5A3A2B'
-                    }]
-                }
+        fetch('/quiz/pontuacao')
+            .then(res => res.json())
+            .then(dados => {
+                const nomes = dados.map(item => item.nome);
+                const pontuacoes = dados.map(item => item.qtd);
+
+                new Chart(canvasPontuacao, {
+                    type: 'bar',
+                    data: {
+                        labels: nomes,
+                        datasets: [{
+                            label: 'Pontuação no Quiz',
+                            data: pontuacoes,
+                            backgroundColor: '#5A3A2B'
+                        }]
+                    }
+                });
             });
-        });
 
-        mostrarGrafico('pontuacao');
+        fetch('/quiz/erros')
+            .then(res => res.json())
+            .then(dados => {
+                const nomes = dados.map(item => item.nome);
+                const erros = dados.map(item => item.qtd);
 
-        fetch('/quiz/erros').then(res => res.json()).then(dados => {
-            const nomes = dados.map(item => item.nome);
-            const erros = dados.map(item => item.qtd);
-            new Chart(canvasErros, {
-                type: 'bar',
-                data: {
-                    labels: nomes,
-                    datasets: [{
-                        label: 'Erros no Quiz',
-                        data: erros,
-                        backgroundColor: '#5A3A2B'
-                    }]
-                }
+                new Chart(canvasErros, {
+                    type: 'bar',
+                    data: {
+                        labels: nomes,
+                        datasets: [{
+                            label: 'Erros no Quiz',
+                            data: erros,
+                            backgroundColor: '#5A3A2B'
+                        }]
+                    }
+                });
             });
-        });
 
-        mostrarGrafico('erros');
+        fetch('/formulario/personagens')
+            .then(res => res.json())
+            .then(dados => {
+                const personagens = dados.map(item => item.perso_fav);
+                const qtd = dados.map(item => item.qtd);
 
-        fetch('/formulario/personagens').then(res => res.json()).then(dados => {
-            const personagens = dados.map(item => item.perso_fav);
-            const qtd = dados.map(item => item.qtd);
-            new Chart(canvasPersonagem, {
-                type: 'pie',
-                data: {
-                    labels: personagens,
-                    datasets: [{
-                        label: 'Favoritos',
-                        data: qtd,
-                        backgroundColor: ['#A8B0B5', '#7A8C8E ', '#4A5C6A ', '#2C3E4F ']
-                    }]
-                }
+                new Chart(canvasPersonagem, {
+                    type: 'pie',
+                    data: {
+                        labels: personagens,
+                        datasets: [{
+                            label: 'Favoritos',
+                            data: qtd,
+                            backgroundColor: ['#A8B0B5', '#7A8C8E', '#4A5C6A', '#2C3E4F']
+                        }]
+                    }
+                });
             });
-        });
-        mostrarGrafico('personagem');
 
-        fetch('/formulario/personagensTemidos').then(res => res.json()).then(dados => {
-            const personagens = dados.map(item => item.perso_temido);
-            const qtd = dados.map(item => item.qtd);
-            new Chart(canvasPersonagemNao, {
-                type: 'pie',
-                data: {
-                    labels: personagens,
-                    datasets: [{
-                        label: 'Temidos',
-                        data: qtd,
-                        backgroundColor: ['#C4A494 ', '#A56B5D ', '#7A4A3C ', '#4D2B26 ']
-                    }]
-                }
+        fetch('/formulario/personagensTemidos')
+            .then(res => res.json())
+            .then(dados => {
+                const personagens = dados.map(item => item.perso_temido);
+                const qtd = dados.map(item => item.qtd);
+
+                new Chart(canvasPersonagemNao, {
+                    type: 'pie',
+                    data: {
+                        labels: personagens,
+                        datasets: [{
+                            label: 'Temidos',
+                            data: qtd,
+                            backgroundColor: ['#C4A494', '#A56B5D', '#7A4A3C', '#4D2B26']
+                        }]
+                    }
+                });
             });
-        });
 
-        mostrarGrafico('personagemNao');
+        fetch('/formulario/temporadas')
+            .then(res => res.json())
+            .then(dados => {
+                const temporadas = dados.map(item => item.temporada);
+                const qtd = dados.map(item => item.qtd);
 
-        fetch('/formulario/temporadas').then(res => res.json()).then(dados => {
-            const temporadas = dados.map(item => item.temporada);
-            const qtd = dados.map(item => item.qtd);
-            new Chart(canvasTemporada, {
-                type: 'bar',
-                data: {
-                    labels: temporadas,
-                    datasets: [{
-                        label: 'Temporadas Favoritas',
-                        data: qtd,
-                        backgroundColor: '#5F6A4F '
-                    }]
-                }
+                new Chart(canvasTemporada, {
+                    type: 'bar',
+                    data: {
+                        labels: temporadas,
+                        datasets: [{
+                            label: 'Temporadas Favoritas',
+                            data: qtd,
+                            backgroundColor: '#5F6A4F'
+                        }]
+                    }
+                });
             });
-        });
 
-        mostrarGrafico('temporada');
+        fetch('/formulario/curiosidades')
+            .then(res => res.json())
+            .then(dados => {
+                const box = document.getElementById("campoCuriosidades");
+                box.innerHTML = "";
 
-        fetch('/formulario/curiosidades').then(res => res.json()).then(dados => {
-            const box = document.getElementById("campoCuriosidades");
-
-            console.log(dados);
-            
-            box.innerHTML = "";
-            dados.forEach(item => {
-             box.innerHTML += `<p><strong>${ item.usuario }:</strong> "${item.text_area}"</p>`;
+                dados.forEach(item => {
+                    box.innerHTML += `<p><strong>${item.usuario}:</strong> "${item.text_area}"</p>`;
+                });
             });
-        });
-
-        mostrarGrafico('curiosidades');
     }
+
 </script>
 
 </html>
