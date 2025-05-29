@@ -93,17 +93,17 @@
         if (nome == '' || email == '' || senha == '' || confimacao == '') {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Preencha todos os campos!";
-            setTimeout(sumirMensagem, 5000);
+            setTimeout(sumirMensagem, 10000);
             return false;
         } else if (!email.includes('@')) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "E-mail inválido (deve conter @)";
-            setTimeout(sumirMensagem, 5000);
+            setTimeout(sumirMensagem, 10000);
             return false;
         } else if (senha !== confimacao) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "As senhas não coincidem.";
-            setTimeout(sumirMensagem, 5000);
+            setTimeout(sumirMensagem, 10000);
             return false;
         }
 
@@ -154,7 +154,7 @@
                             return res.text().then(texto => {
                                 cardErro.style.display = "block";
                                 mensagem_erro.innerHTML = texto;
-                                setTimeout(sumirMensagem, 5000);
+                                setTimeout(sumirMensagem, 10000);
                             });
                         }
                     })
@@ -162,7 +162,7 @@
                         console.error("Erro no cadastro:", erro);
                         cardErro.style.display = "block";
                         mensagem_erro.innerHTML = "Erro ao conectar com o servidor.";
-                        setTimeout(sumirMensagem, 5000);
+                        setTimeout(sumirMensagem, 10000);
                     });
 
 
