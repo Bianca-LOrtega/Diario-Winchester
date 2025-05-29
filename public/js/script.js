@@ -440,7 +440,7 @@ const cacadores = [`<div class="card">
         <p>Rufus é um caçador veterano e parceiro de Bobby Singer. Cínico e direto, ele desconfia de quase tudo, mas sua experiência é inestimável. <strong>1ª aparição: 13º episódio da 3ª temporada ("Ghostfacers")</strong></p>
     </div>`,
     `<div class="card">
-        <img src="../img/sam.jpg" alt="Sam Winchester">
+        <img src="../img/sam.jpeg" alt="Sam Winchester">
         <h3>Sam Winchester</h3>
         <strong class="tag-humano">Caçador</strong>
         <p>Sam é o irmão mais novo da família Winchester, conhecido por sua inteligência, empatia e forte senso moral. Sua compaixão o torna essencial para a esperança e redenção. <strong>1ª aparição: 1º episódio da 1ª temporada ("Pilot")</strong></p>

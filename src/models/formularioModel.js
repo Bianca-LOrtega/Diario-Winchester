@@ -16,6 +16,7 @@ function personagens() {
         SELECT perso_fav AS perso_fav, COUNT(*) AS qtd
         FROM formulario
         GROUP BY perso_fav
+        order by qtd desc
         limit 4;
     `;
     return database.executar(sql);
@@ -26,6 +27,7 @@ function personagensTemidos() {
         SELECT perso_temido as perso_temido, COUNT(*) AS qtd
         FROM formulario
         GROUP BY perso_temido
+        order by qtd desc
         limit 4;
     `;
     return database.executar(sql);

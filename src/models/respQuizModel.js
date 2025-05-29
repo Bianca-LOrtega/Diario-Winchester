@@ -19,7 +19,9 @@ function pontuacao() {
     var instrucao = `SELECT  u.nome as nome , COUNT(*) AS qtd FROM resp_quiz rq
                         inner join usuario as u on u.id = rq.fkusuario
                         WHERE acerto = 1
-                        GROUP BY nome;
+                        GROUP BY nome
+                        order by qtd desc
+                        limit 10;
                     `;
 
                     
@@ -32,7 +34,9 @@ function erros (){
     var instrucao = `SELECT  u.nome as nome , COUNT(*) AS qtd FROM resp_quiz rq
                         inner join usuario as u on u.id = rq.fkusuario
                         WHERE acerto = 0
-                        GROUP BY nome;
+                        GROUP BY nome
+                        order by qtd asc
+                        limit 10;
                     `;
 
                     
