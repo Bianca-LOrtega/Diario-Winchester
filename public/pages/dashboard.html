@@ -102,12 +102,14 @@
 
     function carregarDadosDashboard() {
 
+        var idUsuario = sessionStorage.ID_USUARIO
+
         // Busca personagem preferido do usuário logado
-        fetch(`/usuarios/personagem/${sessionStorage.ID_USUARIO}`, { cache: 'no-store' })
+        fetch(`/usuarios/personagem/${idUsuario}`, { cache: 'no-store' })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        document.getElementById('perso_preferido').innerHTML = resposta[0].personagem;
+                        document.getElementById('perso_preferido').innerHTML = resposta.personagem;
                     });
                 } else {
                     console.warn("Personagem não encontrado");

@@ -14,7 +14,7 @@ router.post("/autenticar", function (req, res) {
 });
 
 // Rota para buscar personagem favorito de um usuário
-router.get("/personagem/:id", function(req, res){
+router.get("/personagem/:idUsuario", function(req, res){
     usuarioController.buscarPersoPorId(req, res);
 });
 
