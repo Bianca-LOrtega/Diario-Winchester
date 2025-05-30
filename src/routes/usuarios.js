@@ -3,13 +3,19 @@ var router = express.Router();
 
 var usuarioController = require("../controllers/usuarioController");
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
+// Rota de cadastro
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
-})
+});
 
+// Rota de login
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
+});
+
+// Rota para buscar personagem favorito de um usuário
+router.get("/personagem/:id", function(req, res){
+    usuarioController.buscarPersoPorId(req, res);
 });
 
 module.exports = router;

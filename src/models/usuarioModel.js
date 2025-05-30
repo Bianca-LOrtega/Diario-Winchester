@@ -22,8 +22,23 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function buscarPersoPorId(idUsuario){
+    var instrucao = `
+        SELECT f.perso_fav AS personagem
+        FROM formulario f
+        INNER JOIN usuario u ON f.fkusuario = u.id 
+        WHERE u.id = ${idUsuario}
+        ORDER BY f.id DESC
+        LIMIT 1;
+    `;
+    console.log("Executando SQL buscarPersoPorId: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarPersoPorId
 };

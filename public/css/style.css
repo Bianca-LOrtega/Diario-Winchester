@@ -1021,7 +1021,18 @@ input {
 
 
 .grafico {
-  width: 400px;
+  width: 450px;
+}
+
+#graficos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 20px;
+  padding: 20px;
+  
 }
 
 .curiosidades-box {
@@ -1086,3 +1097,37 @@ input {
   margin-top: 0px;
   margin-left: 200px;
 }
+
+.kpis-row {
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  font-size: 13px;
+}
+.card-kpis {
+  background: #242121;
+  border: 2px solid #ff7b00;
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  text-align: center;
+  min-height: auto;
+}
+
+.titulo {
+  color: #a25c1f;
+  margin-bottom: 0px;
+}
+
+.cards-kpis .descricao p {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.total_participantes {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+

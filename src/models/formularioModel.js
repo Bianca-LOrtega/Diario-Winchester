@@ -52,10 +52,16 @@ function curiosidades() {
     return database.executar(sql);
 }
 
+function totalParticipantes (){
+    var sql = ` select count(distinct id) as totalParticipante from usuario; `;
+    return database.executar(sql);   
+}
+
 module.exports = {
     cadastrar,
     personagens,
     personagensTemidos,
     temporadas,
-    curiosidades
+    curiosidades,
+    totalParticipantes
 };

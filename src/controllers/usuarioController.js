@@ -77,7 +77,24 @@ function cadastrar(req, res) {
     }
 }
 
+function buscarPersoPorId(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.buscarPersoPorId(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]); // { personagem: "Dean Winchester" }
+            } else {
+                res.status(404).send("Nenhum personagem encontrado para este usuário.");
+            }
+        }).catch(function (erro) {
+            console.error(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    buscarPersoPorId
 }

@@ -31,6 +31,30 @@
     <main class="dashboard">
         <h2>Olá, <span id="nome_usuario">usuário</span>! Bem-vindo à sua análise sobrenatural 👻</h2>
 
+        <div class="kpis-row">
+            <div class="card-kpis">
+                <h1 class="titulo">Seu Personagem Preferido</h1>
+
+                <div class="descricao">
+
+                    <p id="perso_preferido"></p>
+
+                </div>
+
+            </div>
+
+            <div class="card-kpis">
+                <h1 class="titulo">Participantes</h1>
+                <div class="descricao">
+
+                </div>
+                <p class="total_participantes">0</p>
+                <div class="corCardAlerta" id="cardTotalParticipantes"></div>
+
+            </div>
+
+        </div>
+
         <div id="graficos">
             <div id="grafico-pontuacao" class="grafico">
                 <h3>Pontuação no Quiz</h3>
@@ -77,6 +101,43 @@
     document.getElementById("nome_usuario").innerText = sessionStorage.NOME_USUARIO || "Caçador";
 
     function carregarDadosDashboard() {
+
+        // Busca personagem preferido do usuário logado
+        fetch(`/usuarios/personagem/${sessionStorage.ID_USUARIO}`, { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        document.getElementById('perso_preferido').innerHTML = resposta[0].personagem;
+                    });
+                } else {
+                    console.warn("Personagem não encontrado");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro ao buscar personagem preferido: ${error.message}`);
+            });
+
+        // Busca total de participantes
+        fetch(`/formulario/totalParticipantes`, { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        if (!resposta || resposta.length === 0) {
+                            console.warn("Nenhum dado recebido");
+                            return;
+                        }
+                        totalParticipantes(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
         fetch('/quiz/pontuacao')
             .then(res => res.json())
             .then(dados => {
@@ -92,6 +153,37 @@
                             data: pontuacoes,
                             backgroundColor: '#5A3A2B'
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#FFFFFF', // Cor da legenda principal
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo X
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo Y
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -111,6 +203,37 @@
                             data: erros,
                             backgroundColor: '#5A3A2B'
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#FFFFFF', // Cor da legenda principal
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo X
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo Y
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -130,6 +253,37 @@
                             data: qtd,
                             backgroundColor: ['#A8B0B5', '#7A8C8E', '#4A5C6A', '#2C3E4F']
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#FFFFFF', // Cor da legenda principal
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo X
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo Y
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -149,6 +303,37 @@
                             data: qtd,
                             backgroundColor: ['#C4A494', '#A56B5D', '#7A4A3C', '#4D2B26']
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#FFFFFF', // Cor da legenda principal
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo X
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo Y
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -168,6 +353,37 @@
                             data: qtd,
                             backgroundColor: '#5F6A4F'
                         }]
+                    },
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#FFFFFF', // Cor da legenda principal
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo X
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#FFFFFF', // Cor dos rótulos do eixo Y
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -183,6 +399,15 @@
                 });
             });
     }
+
+    function totalParticipantes(resposta) {
+        const total = resposta[0].totalParticipante;
+        const elemento = document.querySelector(".total_participantes");
+        if (elemento) {
+            elemento.innerText = total;
+        }
+    }
+
 
 </script>
 

@@ -54,10 +54,20 @@ function curiosidades(req, res) {
         });
 }
 
+function totalParticipantes(req,res){
+    formularioModel.totalParticipantes()
+        .then(result => res.json(result))
+        .catch(erro => {
+            console.error(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     cadastrar,
     personagens,
     personagensTemidos,
     temporadas,
-    curiosidades
+    curiosidades,
+    totalParticipantes
 };
